@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="testCode" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9A3-hV-lLg">
+                                <rect key="frame" x="16" y="318.5" width="343" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue destination="p9h-xV-k3h" kind="showDetail" id="JvA-HM-1on"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3L3-EN-Y4x">
+                                <rect key="frame" x="16" y="583" width="343" height="64"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="Battery"/>
+                                <connections>
+                                    <segue destination="dYV-BI-MVt" kind="popoverPresentation" popoverAnchorView="3L3-EN-Y4x" id="stJ-HS-Nh5">
+                                        <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                    </segue>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="9A3-hV-lLg" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="2r1-BD-rkh"/>
+                            <constraint firstItem="9A3-hV-lLg" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="9UY-sQ-elt"/>
+                            <constraint firstItem="9A3-hV-lLg" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="edc-FK-6cc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="openButton" destination="9A3-hV-lLg" id="M3S-9d-qDn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="125.59999999999999" y="133.5832083958021"/>
+        </scene>
+        <!--Second View Controller-->
+        <scene sceneID="WgE-Bi-coK">
+            <objects>
+                <viewController id="p9h-xV-k3h" customClass="SecondViewController" customModule="testCode" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fl2-kF-QaY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCo-QK-3FE">
+                                <rect key="frame" x="16" y="617" width="343" height="30"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="tapedCloseButton:" destination="p9h-xV-k3h" eventType="touchUpInside" id="9xp-Ww-ZBR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6qt-Yd-cgN">
+                                <rect key="frame" x="0.0" y="304" width="375" height="59"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Debug"/>
+                                <connections>
+                                    <action selector="tapedDebugButton:" destination="p9h-xV-k3h" eventType="touchUpInside" id="18O-Oy-7xR"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="bCo-QK-3FE" firstAttribute="trailing" secondItem="fl2-kF-QaY" secondAttribute="trailingMargin" id="E6r-fX-bLY"/>
+                            <constraint firstAttribute="bottom" secondItem="bCo-QK-3FE" secondAttribute="bottom" constant="20" symbolic="YES" id="wHp-Eo-Ibv"/>
+                            <constraint firstItem="bCo-QK-3FE" firstAttribute="leading" secondItem="fl2-kF-QaY" secondAttribute="leadingMargin" id="wo3-pP-S7e"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LP4-c5-mJb"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="nl4-aM-OGZ"/>
+                    <connections>
+                        <outlet property="closeButton" destination="bCo-QK-3FE" id="NAA-fG-9V3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DBa-VD-7Ah" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="861.60000000000002" y="133.5832083958021"/>
+        </scene>
+        <!--Battery View Controller-->
+        <scene sceneID="O2b-7x-7oH">
+            <objects>
+                <viewController id="dYV-BI-MVt" customClass="BatteryViewController" customModule="testCode" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Fjp-R4-uSX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bNK-P2-8Ie">
+                                <rect key="frame" x="0.0" y="275" width="375" height="69"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="frN-SA-XFn">
+                                <rect key="frame" x="16" y="617" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="Close"/>
+                                <connections>
+                                    <action selector="tapedCloseButton:" destination="dYV-BI-MVt" eventType="touchUpInside" id="5f9-S8-sLh"/>
+                                    <action selector="tapedCloseButton:" destination="p9h-xV-k3h" eventType="touchUpInside" id="fDT-wk-5su"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cm9-37-E7e">
+                                <rect key="frame" x="0.0" y="195" width="375" height="72"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="85C-EZ-g1L"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Yf4-Xm-drB"/>
+                    <connections>
+                        <outlet property="labelBatteryLevel" destination="Cm9-37-E7e" id="VXL-kr-XQS"/>
+                        <outlet property="labelBatteryStatus" destination="bNK-P2-8Ie" id="Ewu-oc-rZL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5wG-LA-3BM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="125.59999999999999" y="868.51574212893559"/>
+        </scene>
+    </scenes>
+</document>
