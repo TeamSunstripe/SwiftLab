@@ -16,6 +16,7 @@
 		A4EBD172228C0EC8006A193A /* testCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EBD171228C0EC8006A193A /* testCodeTests.swift */; };
 		A4EBD17D228C0EC8006A193A /* testCodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EBD17C228C0EC8006A193A /* testCodeUITests.swift */; };
 		A4EBD18B228C1881006A193A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EBD18A228C1881006A193A /* SecondViewController.swift */; };
+		F64EEF0B229E23C700C348D3 /* FileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EEF0A229E23C700C348D3 /* FileOperation.swift */; };
 		F68593832297E9DE00DC7FB1 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68593822297E9DE00DC7FB1 /* DebugView.swift */; };
 		F68593852297EA8200DC7FB1 /* DebugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F68593842297EA8200DC7FB1 /* DebugView.xib */; };
 		F68593872297EBAA00DC7FB1 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F68593862297EBA900DC7FB1 /* Debug.storyboard */; };
@@ -56,6 +57,7 @@
 		A4EBD17C228C0EC8006A193A /* testCodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCodeUITests.swift; sourceTree = "<group>"; };
 		A4EBD17E228C0EC8006A193A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4EBD18A228C1881006A193A /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		F64EEF0A229E23C700C348D3 /* FileOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileOperation.swift; sourceTree = "<group>"; };
 		F68593822297E9DE00DC7FB1 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		F68593842297EA8200DC7FB1 /* DebugView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebugView.xib; sourceTree = "<group>"; };
 		F68593862297EBA900DC7FB1 /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 		A462CC272293E772001D4BEE /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				F64EEF09229E238F00C348D3 /* FileOperation */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -192,6 +195,14 @@
 				A4EBD17E228C0EC8006A193A /* Info.plist */,
 			);
 			path = testCodeUITests;
+			sourceTree = "<group>";
+		};
+		F64EEF09229E238F00C348D3 /* FileOperation */ = {
+			isa = PBXGroup;
+			children = (
+				F64EEF0A229E23C700C348D3 /* FileOperation.swift */,
+			);
+			path = FileOperation;
 			sourceTree = "<group>";
 		};
 		F6A19503229D139700A4DB90 /* Resource */ = {
@@ -342,6 +353,7 @@
 				A49EE9182293E6D100A612DD /* BatteryViewController.swift in Sources */,
 				A4EBD15F228C0EC2006A193A /* ViewController.swift in Sources */,
 				A4EBD15D228C0EC2006A193A /* AppDelegate.swift in Sources */,
+				F64EEF0B229E23C700C348D3 /* FileOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
