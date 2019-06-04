@@ -66,6 +66,46 @@ class ViewController: UIViewController {
                 print(timetable!.isEmpty)
             }
         }
+        
+        let num1: Int? // 宣言した時点ではnil
+        num1 = 10
+        print(num1) // → "Optional(10)"
+        if let wrap_num1 = num1 {
+            print(wrap_num1) // → "10"
+            let num2 = wrap_num1 + 10 // ← エラー
+            print(num2) // → "Optional(10)"
+        }
+
+        let str1: String? = """
+H
+E
+L
+L
+O
+"""
+        let str2 = str1?.lowercased() // オプショナルチェイニングに変更
+        if let wrap_str2 = str2 {
+            print("str2 : Optional")
+            print(str2) // → Optional("hello")
+            print("wrap_str2 : ")
+            print(wrap_str2) // → hello
+        }
+        myUnwrappedName(name: str1)
+        
+        let size: Int? = str1?.uppercased().count
+        let default_size = 10
+        let yourSize = size ?? default_size // （1）sizeがnilの場合には1
+        // print(yourSize) // →
+
+        myUnwrappedName(name: yourSize.description)
+
+    }
+    
+    func myUnwrappedName(name: String?) {
+        guard let unwrappedName = name else { return }
+        // 引数がnilでない場合の処理
+        print("unwrappedName : ")
+        print(unwrappedName) // →
     }
 }
 
