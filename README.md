@@ -10,6 +10,11 @@
 - Project の 作成
 - Pull requests の 作成
 
+## Issues の作成
+Issuesの記事は、TODOの場合と一時的なものがあります。
+
+TODOの場合は、Label / Milestone / Project
+
 ## Pull requestsの作成
 基本的に、HTML / Swift のプログラミングの方の作業が発生した時に使用
 
@@ -17,9 +22,7 @@
 基本的に、ドキュメント化 / 記事化 / サイト化 / プログラミング化 として運用
 Issues / Pull Requests
 
-Issuesの記事は、TODOの場合と一時的なものがあります。
-
-TODOの場合は、Label / Milestone / Project
+呼んでおく内容読み物
 
 ## Labelとは
 Labelの用途 一覧で見た時にどの項目があるのか一目で分かる：タグ付けみたいなもの
