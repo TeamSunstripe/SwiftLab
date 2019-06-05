@@ -31,10 +31,31 @@ import UIKit
     }
 }
 
+struct Hero {
+    var name: String
+    var hitPoint: Int
+    let magicPoint: Int
+    let weapons: [Weapon]
+}
+
+struct Weapon {
+    let name: String
+    let strength: Int
+}
+
+struct Item {
+    let name: String
+    let description: String
+}
+
 @IBDesignable class ViewController: UIViewController {
     @IBOutlet weak var openButton: Swift4CustomButton!
     var timetable: Dictionary<AnyHashable, Any>?
     
+    var player_yoshihiko: PlayerHero? = nil
+    var steelSword = Weapon(name: "鋼の剣", strength: 20)
+    var enemy_slime: MonsterEnemy? = nil
+    var observation:NSKeyValueObservation? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -346,70 +367,6 @@ O
         print(str[..<dot])   // "Hello Samurai-Engineer"
         print(str[..<space]) // "Hello"
 
-        struct Weapon {
-            let name: String
-            let strength: Int
-        }
-        
-        struct Hero {
-            let name: String
-            let hitPoint: Int
-            let magicPoint: Int
-            let weapons: [Weapon]
-        }
-        
-        struct Enemy {
-            let name: String
-            let hitPoint: Int
-        }
-        
-        
-        let steelSword = Weapon(name: "鋼の剣", strength: 20)
-        let yoshihiko = Hero(name: "勇者ヨシヒコ", hitPoint: 90, magicPoint: 12, weapons: [steelSword])
-        print(yoshihiko.name) // "勇者ヨシヒコ"
-        print(yoshihiko.weapons.first!.name) // "鋼の剣"
-        
-        class PlayerHero: NSObject {
-            let name: String
-            @objc dynamic var hitPoint: Int
-            
-            init(name: String, hitPoint: Int) {
-                self.name = name
-                self.hitPoint = hitPoint
-                super.init()
-            }
-        }
-        
-        class MonsterEnemy: NSObject {
-            let name: String
-            @objc dynamic var hitPoint: Int
-            
-            init(name: String, hitPoint: Int) {
-                self.name = name
-                self.hitPoint = hitPoint
-                super.init()
-            }
-            
-            func attack(to hero: PlayerHero) {
-                hero.hitPoint -= 5
-            }
-        }
-        
-        let player_yoshihiko = PlayerHero(name: "勇者ヨシヒコ", hitPoint: 90)
-        let enemy_slime = MonsterEnemy(name: "スライム", hitPoint: 10)
-        /*
-         player_yoshihiko.observe(Hero.hitPoint, options: [.old, .new]) { me, change in
-         let diff = (change.newValue ?? 0) - (change.oldValue ?? 0)
-         let isDamaged = diff < 0
-         print("(me.name)は、HPを(abs(diff))(isDamaged ? "消費した" : "回復した" )")
-         }
-        */
-
-        // スライムの攻撃!
-        enemy_slime.attack(to: player_yoshihiko)
-        // "勇者ヨシヒコは、HPを5消費した"と出力される
-        
-        
         /***
          * クロージャーの設定の仕方
          * @autoclosure
@@ -438,6 +395,64 @@ O
             print(managerdName)
         }
         */
+        
+        struct Hero_ {
+            let name: String
+            let hitPoint: Int
+            let magicPoint: Int
+            let weapon: Weapon
+        }
+        
+        struct Enemy {
+            let name: String
+            let hitPoint: Int
+        }
+        
+        
+        steelSword = Weapon(name: "鋼の剣", strength: 20)
+        let yoshihiko = Hero(name: "勇者ヨシヒコ", hitPoint: 90, magicPoint: 12, weapons: [steelSword])
+        
+        print(yoshihiko[keyPath: \Hero.name]) // "勇者ヨシヒコ"
+        print(yoshihiko[keyPath: \Hero.weapons.first!.name]) // "鋼の剣"
+        
+        player_yoshihiko = PlayerHero(name: "勇者ヨシヒコ", hitPoint: 90)
+        enemy_slime = MonsterEnemy(name: "スライム", hitPoint: 10)
+        
+        if let enemy_slime = enemy_slime,let player_yoshihiko = player_yoshihiko {
+            
+            // 監視オブジェクトを保持する
+            enemy_slime.damaged = enemy_slime.observe(\.hitPoint, options: [.new,.old], changeHandler: { me,change in
+                let diff = (change.newValue ?? 0) - (change.oldValue ?? 0)
+                let isDamaged = diff < 0
+                if me.hitPoint > 0 {
+                    print("\(me.name)::HP(\(me.hitPoint))は、HPを\(abs(diff))\(isDamaged ? "消費した" : "回復した")")
+                } else {
+                    print("\(me.name)は死亡した")
+                    me.die()
+                }
+            })
+            
+            // 監視オブジェクトを保持する
+            player_yoshihiko.damaged = player_yoshihiko.observe(\.hitPoint, options: [.new,.old], changeHandler: { me,change in
+                let diff = (change.newValue ?? 0) - (change.oldValue ?? 0)
+                let isDamaged = diff < 0
+                if me.hitPoint > 0 {
+                    print("\(me.name)::HP(\(me.hitPoint))は、HPを\(abs(diff))\(isDamaged ? "消費した" : "回復した")")
+                } else {
+                    print("\(me.name)は死亡した")
+                }
+            })
+        }
+        
+        let steelSword1 = Weapon(name: "鋼の剣", strength: 20)
+        let yoshihiko1 = Hero_(name: "勇者ヨシヒコ", hitPoint: 90, magicPoint: 12, weapon: steelSword1)
+        
+        let keyPath1 = \Hero_.weapon
+        let keyPath2 = keyPath1.appending(path: \Weapon.name)// 名前(name)を追加
+        
+        print(yoshihiko1[keyPath: keyPath1]) // "Weapon(name: "鋼の剣", strength: 20)"
+        print(yoshihiko1[keyPath: keyPath2]) // "鋼の剣"
+        
     }
     
     /* @NSCopying
@@ -453,7 +468,6 @@ O
      */
     @NSManaged var managerdName: String
     
-    
     func myUnwrappedName(name: String?) {
         guard let unwrappedName = name else { return }
         // 引数がnilでない場合の処理
@@ -461,6 +475,27 @@ O
         print(unwrappedName) // →
     }
     
+    @IBAction func slimeAttack(_ sender: Any) {
+        if let enemy_slime = enemy_slime,let player_yoshihiko = player_yoshihiko {
+            print("\(enemy_slime.name)の攻撃!")
+            // スライムの攻撃!
+            enemy_slime.attack(to: player_yoshihiko,from: enemy_slime)
+            // "勇者ヨシヒコは、HPを5消費した"と出力される
+        } else {
+            print("何も起こらなかった")
+        }
+    }
+    
+    @IBAction func heroAttack(_ sender: Any) {
+        if let enemy_slime = enemy_slime,let player_yoshihiko = player_yoshihiko {
+            print("\(player_yoshihiko.name)の攻撃!")
+            // 勇者ヨシヒコの攻撃!
+            player_yoshihiko.attack(to: enemy_slime,from: player_yoshihiko)
+            // "勇者ヨシヒコは、HPを5消費した"と出力される
+        } else {
+            print("何も起こらなかった")
+        }
+    }
     // 定義部分
     // Swift4 @autoclosure クロージャーの設定
     func someClosureMethod(closure: @autoclosure () -> Int) {
@@ -642,5 +677,50 @@ extension UIColor {
     
     convenience init(hex: String) {
         self.init(hex: hex, alpha: 1.0)
+    }
+}
+
+class Monster: NSObject {
+    var name: String
+    @objc dynamic var hitPoint: Int
+    let power: Int = 5
+    
+    var damaged: NSKeyValueObservation? = nil
+    
+    init(name: String, hitPoint: Int) {
+        self.name = name
+        self.hitPoint = hitPoint
+        super.init()
+    }
+    
+    func attack(to plaer: Monster , from enemy: Monster) {
+        plaer.hitPoint -= enemy.power
+    }
+}
+
+class PlayerHero: Monster {
+    var hero: Hero = Hero(name: "勇者ヨシヒコ", hitPoint: 90, magicPoint: 12, weapons: [])
+    
+    override init(name: String,hitPoint: Int) {
+        hero.name = name
+        hero.hitPoint = hitPoint
+        super.init(name: name, hitPoint: hitPoint)
+    }
+    
+    func getItems ( items: [Item] ) {
+        print(items)
+    }
+}
+
+class MonsterEnemy: Monster {
+    var items: [Item?] = [Item(name: "キノコ", description: "回復する"),nil]
+
+    func die() {
+        print("敵を倒したぞ！！")
+        if let item: Item? = items.randomElement() {
+            if let item = item {
+                print("\(item.name)を落とした")
+            }
+        }
     }
 }
