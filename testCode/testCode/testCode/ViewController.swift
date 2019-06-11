@@ -457,6 +457,8 @@ O
          ***/
         
         self.view.backgroundColor = UIColor.init(hexRGBA: "FFFFFF88");
+        openButton.backgroundColor = UIColor.loginButtonColor()
+        
     }
     
     /* @NSCopying
