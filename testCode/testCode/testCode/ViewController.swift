@@ -473,6 +473,8 @@ O
          ※   Data Bindingパターン（プロパティオブザーバ+Closure）
          ※ これら以外にもRxSwiftやBondなど、OSSを用いた通知のパターンもありますが本記事の内容には含まれません。
          ***/
+        
+        self.view.backgroundColor = UIColor.init(hexRGBA: "FFFFFF88");
     }
     
     /* @NSCopying

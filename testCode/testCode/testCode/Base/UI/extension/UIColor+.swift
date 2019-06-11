@@ -20,4 +20,13 @@ extension UIColor {
     convenience init(hex: String) {
         self.init(hex: hex, alpha: 1.0)
     }
+    
+    convenience init(hexRGBA: String) {
+        let v = hexRGBA.map { String($0) } + Array(repeating: "0", count: max(6 - hexRGBA.count, 0))
+        let r = CGFloat(Int(v[0] + v[1], radix: 16) ?? 0) / 255.0
+        let g = CGFloat(Int(v[2] + v[3], radix: 16) ?? 0) / 255.0
+        let b = CGFloat(Int(v[4] + v[5], radix: 16) ?? 0) / 255.0
+        let a = CGFloat(Int(v[6] + v[7], radix: 16) ?? 0) / 255.0
+        self.init(red: r, green: g, blue: b, alpha: a)
+    }
 }
