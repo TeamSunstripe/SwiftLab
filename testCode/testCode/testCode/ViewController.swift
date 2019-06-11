@@ -31,16 +31,6 @@ import UIKit
     }
 }
 
-struct Weapon {
-    let name: String
-    let strength: Int
-}
-
-struct Item {
-    let name: String
-    let description: String
-}
-
 @IBDesignable class ViewController: UIViewController {
     @IBOutlet weak var openButton: Swift4CustomButton!
     var timetable: Dictionary<AnyHashable, Any>?
