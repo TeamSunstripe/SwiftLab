@@ -408,7 +408,6 @@ O
             let hitPoint: Int
         }
         
-        
         steelSword = Weapon(name: "鋼の剣", strength: 20)
         let yoshihiko = Hero(name: "勇者ヨシヒコ", hitPoint: 90, magicPoint: 12, weapons: [steelSword])
         
@@ -687,38 +686,6 @@ extension MySubObjvtiveClass {
  * @NSKeyedArchiverClassName
  * クラスに対し、インスタンスをアーカイブする際にNSKeyedArchiverやNSKeyedUnarchiverで利用される名前を指定します
  */
-
-class Monster: NSObject {
-    var name: String
-    @objc dynamic var hitPoint: Int
-    let power: Int = 5
-    
-    var damaged: NSKeyValueObservation? = nil
-    
-    init(name: String, hitPoint: Int) {
-        self.name = name
-        self.hitPoint = hitPoint
-        super.init()
-    }
-    
-    func attack(to plaer: Monster , from enemy: Monster) {
-        plaer.hitPoint -= enemy.power
-    }
-}
-
-class PlayerHero: Monster {
-    var hero: Hero = Hero(name: "勇者ヨシヒコ", hitPoint: 90, magicPoint: 12, weapons: [])
-    
-    override init(name: String,hitPoint: Int) {
-        hero.name = name
-        hero.hitPoint = hitPoint
-        super.init(name: name, hitPoint: hitPoint)
-    }
-    
-    func getItems ( items: [Item] ) {
-        print(items)
-    }
-}
 
 class MonsterEnemy: Monster {
     var items: [Item?] = [Item(name: "キノコ", description: "回復する"),nil]
