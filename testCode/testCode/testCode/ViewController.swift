@@ -103,7 +103,7 @@ struct Item {
             }
             // 全削除
             tt.removeAll()
-
+            
             if tt.isEmpty {
                 timetable = nil
                 print("timetable : {空}")
@@ -245,7 +245,7 @@ struct Item {
          *
          * Reduceの強化
          *
-        **************/
+         **************/
         
         // 1から9までの数字を全部足した数を求める
         let sum = [1, 2, 3, 4, 5, 6, 7, 8, 9].reduce(0) { result, number in
@@ -265,7 +265,7 @@ struct Item {
             let num2 = wrap_num1 + 10 // ← エラー
             print(num2) // → "Optional(10)"
         }
-
+        
         let str1: String? = """
 H
 E
@@ -286,7 +286,7 @@ O
         let default_size = 10
         let yourSize = size ?? default_size // （1）sizeがnilの場合には1
         // print(yourSize) // →
-
+        
         myUnwrappedName(name: yourSize.description)
         
         /***********************
@@ -349,11 +349,11 @@ O
         // iOS 10以降を要求
         
         #if swift(>=4.2)
-            // Swift 4 では
-            print("Hello World".count) // → 11
+        // Swift 4 では
+        print("Hello World".count) // → 11
         #else
-            // Swift 3 では
-            print("Hello World".characters.count) // → 11
+        // Swift 3 では
+        print("Hello World".characters.count) // → 11
         #endif
         
         
@@ -366,7 +366,7 @@ O
         print(str[..<hyphen]) // "Hello Samurai"
         print(str[..<dot])   // "Hello Samurai-Engineer"
         print(str[..<space]) // "Hello"
-
+        
         /***
          * クロージャーの設定の仕方
          * @autoclosure
@@ -391,10 +391,10 @@ O
         MySubObjvtiveClass().wobble()
         /*
          error
-        if managerdName != nil {
-            print(managerdName)
-        }
-        */
+         if managerdName != nil {
+         print(managerdName)
+         }
+         */
         
         struct Hero_ {
             let name: String
@@ -453,6 +453,26 @@ O
         print(yoshihiko1[keyPath: keyPath1]) // "Weapon(name: "鋼の剣", strength: 20)"
         print(yoshihiko1[keyPath: keyPath2]) // "鋼の剣"
         
+        /**/
+        /**
+         *   はじめに
+         *   Swiftとオブジェクト間の通知のパターンについて考えてみます。
+         *   「オブジェクト間の通知」とはオブジェクト間のメッセージのやりとりを意味します。
+         *    iOSアプリ開発では複数のオブジェクトを扱うため、その通知方法の設計は疎かにはできません。アプリの規模が大きくなるにつれて、コードの重複を避け、再利用のためにコードを責務（役割）に応じて分割する必要があります。例えば、View（UI）とModel（ビジネスロジック）を分けた場合、Modelのデータ更新の完了をViewへどのように通知したらよいでしょうか。
+         **/
+        
+        /***
+         ※  概要
+         ※  本記事ではアンチパターンを含めた以下の6つの通知パターンを説明します。最後に、それぞれのパターンの比較と使い分けについて説明します。
+         
+         ※   循環参照パターン（アンチパターン）
+         ※   Delegateパターン（弱参照+ポリモーフィズム）
+         ※   NotificationCenterパターン
+         ※   KVO（Key-Value Observing: キー値監視）パターン
+         ※   Closure Callbackパターン
+         ※   Data Bindingパターン（プロパティオブザーバ+Closure）
+         ※ これら以外にもRxSwiftやBondなど、OSSを用いた通知のパターンもありますが本記事の内容には含まれません。
+         ***/
     }
     
     /* @NSCopying
@@ -461,7 +481,7 @@ O
      * Swift4でイニシャライザでの挙動が改善されました（Proposal: SE-0153）
      */
     // @NSCopying var copyingfoo: NSCopying
-
+    
     /**
      * @NSManaged
      *クラスのインスタンスメソッドやストアドプロパティに対し、CoreDataで実行時に動的に実装が生成されることを宣言します
@@ -508,7 +528,7 @@ O
      * @escaping
      * クロージャをスコープ外でも保持する必要があることを示します
      *   以下の例では、completionクロージャーの実行を非同期で実行しているため、スコープ外ではクロージャーが保持されず、コンパイルエラーとなります
-    */
+     */
     // NG: コンパイルエラー
     func errorSomeAsyncMethod(completion: () -> Void) {
         DispatchQueue.main.async {
@@ -536,7 +556,7 @@ O
     func someMethodForObjc() {
         print("someMethodとしてObjective-Cから利用可能")
     }
-
+    
     /**
      * @nonobjc
      * Objective-Cから使用できないことを明示的に宣言します
@@ -565,7 +585,7 @@ O
     @IBAction func swift4ButtonTapped() {
         print("@IBAction")
     }
-
+    
 }
 
 /**
@@ -642,10 +662,10 @@ extension MySubObjvtiveClass {
  */
 /*
  GKComponent
-class MyComponent: GKComponent {
-    @GKInspectable var speed: Float = 1.0
-    @GKInspectable var friction: Float = 2.0
-}
+ class MyComponent: GKComponent {
+ @GKInspectable var speed: Float = 1.0
+ @GKInspectable var friction: Float = 2.0
+ }
  */
 
 /**
@@ -700,7 +720,7 @@ class PlayerHero: Monster {
 
 class MonsterEnemy: Monster {
     var items: [Item?] = [Item(name: "キノコ", description: "回復する"),nil]
-
+    
     func die() {
         print("敵を倒したぞ！！")
         if let item: Item? = items.randomElement() {
@@ -710,3 +730,383 @@ class MonsterEnemy: Monster {
         }
     }
 }
+
+/***
+ * 6つの通知パターン
+ * 1. 循環参照パターン（アンチパターン）
+ * はじめに、やってはダメなアンチパターンについて触れておきます。シンプルに考えると、通知のために別オブジェクトのメソッドを実行するには、そのオブジェクトの参照を持っていれば良いということになります。そのため、オブジェクト間で相互にやりとりをするにはお互いの参照を持っていれば良いことになります。
+ *
+ * 循環参照パターンのソースコード例は以下のようになります。
+ *
+ * 循環参照パターン
+ ***/
+
+import UIKit
+
+class NotificationView:View {
+    // ★ Modelオブジェクトへの参照
+    var modelNotification: NotificationModel = NotificationModel()
+    
+    // 1. UIイベントの発生
+    override func receiveUIEvent() {
+        modelNotification.view = self
+        
+        // 2. データの更新をModelに通知
+        modelNotification.updateData()
+    }
+    
+    // 5. UIの更新
+    override func updateUI() {
+        print("\(modelNotification.data)")
+    }
+}
+
+class NotificationModel {
+    // ★ Viewオブジェクトへの参照
+    var view: NotificationView?
+    var data: Int = 0
+    
+    // 3. データの更新
+    func updateData() {
+        data += 1
+        
+        // 4. Viewへデータの更新完了を通知
+        view?.updateUI()
+        let view = View()
+        view.receiveUIEvent()
+    }
+}
+
+/**
+ *
+ * こちらのソースコードは正常に動作しますが、「循環参照」(strong reference cycle)という問題を抱えています。オブジェクトがお互いに参照を持つ状態になった場合、参照関係が循環していると言えます。循環参照になった場合、オブジェクトはメモリから解放されなくなってしまいます。この状態をメモリリークと言います。メモリリークが増えるとパフォーマンスが落ち、最悪アプリがクラッシュするため、このパターンを採用すべきではありません。
+ *
+ * ＜補足: iOSのメモリ管理方式について＞
+ * iOSではメモリ管理を参照カウンタ(Reference Counting)という方式で行っています。オブジェクトへの参照を持つごとに参照カウンタを+1し、オブジェクトへの参照がなくなった時点で-1します。つまりどのオブジェクトも参照していない場合、参照カウンタが0になるため、OSはそのオブジェクトをメモリから開放しても良いと判断します。ARC（自動参照カウンタ）の採用により、iOS5以降ではプログラマがメモリ管理を意識することは減りましたが、循環参照には気をつける必要があります。
+ *
+ * 2. Delegateパターン（弱参照+ポリモーフィズム）
+ * 次に紹介するのはパターン1の改良版です。Swiftではプロパティにweakキーワードをつけることで、「弱参照」（weak reference）することができます。弱参照の場合は通常の「強参照」と異なり、先に説明した参照カウンタが増えません。つまり循環参照の問題が解決します。弱参照のプロパティでは参照先のオブジェクトが解放され、nilが代入される可能性があるため、オプショナル型で定義する必要があります。
+ 
+ * Viewオブジェクトへの参照を弱参照にする
+ * // weakキーワードで弱参照
+ * weak var view: View?
+ * これで循環参照の問題は解決しました。しかしこのパターンにはさらに改良の余地があります。それはViewとModelが「密結合」であるという点です。密結合な設計は変更に弱く、再利用もしづらいと言えます。ここで言う変更に弱いというのは、仕様変更が入った場合に変更箇所が多くなるという意味です。
+ *
+ * 例えば、ViewでなくSecondViewがModelを使うよう仕様変更が入ったとします。Modelのクラス内にはViewが書かれているため、これを修正しないとSecondViewからは利用できません。「ModelはViewに依存している」とも言えます。
+ *
+ */
+
+//Modelの仕様変更
+class testModel {
+    // View → SecondViewに変更が必要
+    weak var view: View?
+    var data: Int = 0
+    func updateData() {
+        data += 1
+        view?.updateUI()
+    }
+}
+/***
+ * この問題を解決するには、ModelがViewに依存しない書き方にする必要があります。具体的には、ModelがViewに依存するのではなく、より抽象的なインタフェースに依存させるようにします。Modelが必要とする抽象的なインタフェースとは何でしょうか？
+ *
+ * それは「updateUIメソッドが実行できること」のみです。updateUIメソッドが実行できるクラスであればViewでなくともSecondViewでもどんなクラスでも良いということになります。この抽象的なインタフェースを表す方法の1つとして、Swiftではプロトコルがあります。プロトコルはJavaにおけるinterfaceに近い概念です。
+ 
+ * updateUIメソッドを持つという概念をプロトコルで実装すると以下のようになります。
+ 
+ ***/
+/***
+ * プロトコルの例
+ */
+protocol SampleViewProtocol {
+    func updateUI()
+}
+
+/*プロトコルはインスタンス化することはできません。しかし型として扱えるため、Modelクラスの実装を以下のように書くことができます。*/
+
+/**
+ * ModelをSampleViewProtocolに依存させる
+ */
+
+// ViewProtocolに準拠することを宣言
+class View: SampleViewProtocol {
+    var model: SampleViewProtocolModel = SampleViewProtocolModel()
+    
+    func receiveUIEvent() {
+        model.view = self
+        model.updateData()
+    }
+    
+    // ViewProtocolに準拠したメソッド
+    func updateUI() {
+        print("\(model.data)")
+    }
+}
+
+protocol ViewProtocol: class {
+    func updateUI()
+}
+
+class SampleViewProtocolModel {
+    // ViewでなくViewProtocolに依存
+    weak var view: View?
+    var data: Int = 0
+    func updateData() {
+        data += 1
+        view?.updateUI()
+    }
+}
+
+/***
+ * これでModelがViewに依存しないコードになりました。これは「ポリモーフィズム」の一例にもなっています。ポリモーフィズム（polymorphism: 多態性）は、動的にメソッドによって呼び出されるオブジェクトが変わり、そのオブジェクトによって振る舞いが変わるという性質です。今回の例では、Modelはviewプロパティに対しupdateUIメソッドを実行していますが、viewプロパティがViewなのかSecondViewなのかは分かりません。しかし、実行されるオブジェクトによってupdateUIメソッドの実装は異なり、振る舞いが変化します。
+ *
+ * UIKitフレームワークではUITableViewDelegateプロトコルなど、多くのオブジェクトでこのデリゲートパターンが採用されています。デリゲートパターンにおけるポリモーフィズムの性質を活かすことで、再利用性の高いUI部品が提供されています。
+ */
+
+// ＜補足: プロトコルのclass継承について＞
+
+// プロトコルのclass継承
+protocol classViewProtocol: class {
+    func updateUI()
+}
+
+/***
+ * 上記のコード例では、ViewProtocolはclassを継承させています。classを継承すると、そのプロトコルはクラスにしか適用できなくなります。先に説明したように、Modelのviewプロパティはweak（弱参照）で定義されているため、クラス（参照型）である必要があります。クラス以外の構造体や列挙体は値型であるため、weakを利用できません。そのため、ViewProtocolがクラス（参照型）であることを明示するためにclassを継承する必要があります。
+ *
+ ***/
+class protocolModel {
+    // weakがついているのでViewProtocolは参照型である必要がある
+    weak var view: ViewProtocol?
+    
+}
+/*
+ * 3. NotificationCenterパターン
+ 次にNotificationCenterクラスを利用した通知のパターンを説明します。NotificationCenterは受信登録したオブジェクトに対し情報をブロードキャストします。また、同じ通知名を別のオブジェクトからも送信できるため、多対多の通知を実現できます。
+ 
+ * NotificationCenterは以下のように利用できます。通知名はNotification.Nameをextensionで拡張し、staticプロパティで定義しておくと利用しやすいです。
+ */
+
+/*** NotificationCenterの使い方 ***/
+// 通知名を登録
+extension Notification {
+   static let updateDataNotification = Notification.Name("updateDataNotification")
+}
+
+/*
+ //　通知の受信登録（updateDataNotificationの通知を受信したら、updateUIメソッドを実行）
+ NotificationCenter.default.addObserver(self,
+ selector: #selector(updateUI),
+ name: .updateDataNotification,
+ object: nil)
+ 
+ // 通知の送信（updateDataNotificationの通知を送信）
+ NotificationCenter.default.post(name: .updateDataNotification,
+ object: nil)
+ NotificationCenterを利用した場合のModelからViewへ通知する例は以下のようになります。
+ */
+
+/***
+ * NotificationCenterパターン
+ ***/
+
+// 通知名を登録
+// TODD:既にあるのでコメントアウト
+// extension Notification.Name {
+//    static let updateDataNotification = Notification.Name("updateDataNotification")
+//}
+
+class sampleModeView {
+    var model: SampleModel = SampleModel()
+    
+    init() {
+        // 通知の受信登録（updateDataNotificationの通知を受信したら、updateUIメソッドを実行）
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateUI),
+                                               name: Notification.updateDataNotification,
+                                               object: nil)
+    }
+    
+    func receiveUIEvent() {
+        model.updateData()
+    }
+    
+    @objc func updateUI() {
+        print("\(model.data)")
+    }
+}
+
+class SampleModel {
+    var data: Int = 0
+    func updateData() {
+        data += 1
+        
+        // 通知の送信（updateDataNotificationの通知を送信）
+        NotificationCenter.default.post(name: Notification.updateDataNotification,
+                                        object: nil)
+    }
+}
+
+/*
+ ※通知の受信解除（removeObserver）はiOS9以降ではdeinit時に自動で実行されます。
+ ※Selectorは実行時に呼び出すメソッドが決定する、Objective-C方式の動的な呼び出しを行うため、updateUIメソッドには@objc属性をつけています。
+ 
+ NotificationCenterパターンは通知名の文字列で簡単に通知を実装できますが、多用すると処理の流れが追いづらく、スパゲッティプログラムになる可能性もあるので、少し注意が必要です。N対Nの通知が必要な場合や通知したいオブジェクト間に直接の参照関係がない場合にも利用できるため、そのようなケースでは有効です。
+ */
+
+
+/*
+ 4. KVO（Key-Value Observing: キー値監視）パターン
+ KVOは特定のオブジェクトのプロパティ値の変化を監視する仕組みです。
+ Objective-Cのランタイム機能を利用しているため、監視対象のオブジェクトはObjective-CのNSObjectを継承している必要があります。Swift4では、監視部分のコードをクロージャーで書けるようになり、より使いやすくなりました。
+ */
+// KVOパターン
+class KVOView {
+    var model: KVOModel = KVOModel()
+    
+    // 監視オブジェクトを保持する
+    var observation: NSKeyValueObservation?
+    
+    init() {
+        // modelのdataプロパティをKVOで監視する
+        observation = model.observe(\.data, options: [.new]) { model, change in
+            // model.dataが変化した場合に実行されるクロージャー
+            if let newValue = change.newValue {
+                print(newValue) // print(model.data) でもOK
+            }
+        }
+    }
+    
+    func receiveUIEvent() {
+        model.updateData()
+    }
+}
+
+// NSObjectを継承
+class KVOModel: NSObject {
+    // @objcとdynamicをつける
+    @objc dynamic var data: Int = 0
+    func updateData() {
+        data += 1
+    }
+}
+/* KVOではObjective-Cのランタイム呼び出しによる動的ディスパッチ（実行時に動的にプロパティが決定される）を利用するため、監視するプロパティには@objc属性とdynamicキーワード（dynamic dispatch）が必要です。
+ 
+ WebKitのWKWebViewのプロパティの中には、titleやurl、estimatedProgressなど、KVOに対応したプロパティ(key-value observing compliant)があり、KVOと相性が良いです。逆に、構造体（struct）はNSObjectを継承することができないため、KVOは利用できません。
+ */
+
+/*
+ 5. Closure Callbackパターン
+ 次に、よく使われるClosure Callbackパターンを説明します。Closure Callbackパターンでは、完了後の処理をクロージャーで受け取り、そのコールバック用のクロージャーを実行することで通知します。
+ */
+// ClosureCallbackパターン
+class ClosureCallbackView {
+    var model: ClosureCallbackModel = ClosureCallbackModel()
+    
+    func receiveUIEvent() {
+        // 完了後の処理をクロージャーで指定する
+        // 末尾のクロージャーの引数名は省略できる（trailing closure記法）
+        model.updateData { data in
+            print(data)
+        }
+    }
+}
+
+class ClosureCallbackModel {
+    var data: Int = 0
+    
+    // 完了後の処理を引数のクロージャーで受け取って実行する
+    func updateData(completion: (_ data: Int) -> Void) {
+        data += 1
+        completion(data)
+    }
+}
+/*
+ Closure Callbackパターンは通知完了後の処理を呼び出しメソッドの近くに書けるため、可読性が高くなります。ただし複数の非同期処理を逐次実行する場合は、クロージャーのネストが深くならないように注意が必要です。
+ */
+//Closureのネストが深くなる例
+/*
+    func receiveUIEvent() {
+        model.updateData(completion: { data in
+            model.updateData(completion: { data in
+                model.updateData(completion: { data in
+                    print(data)
+                })
+            })
+        })
+    }
+ */
+/*
+ Closure CallbackパターンはUIKitでも利用されています。例えば、UIAlertControllerのUIAlertActionはダイアログタップ時の処理をクロージャーで指定します。
+ */
+/*
+ UIAlertAction
+ let alertAction = UIAlertAction(title: "OK",
+ style: .default) { handler in
+ // OKボタンタップ時の処理
+ print("OKがタップされました")
+ }
+ */
+/*
+ 6. Data Bindingパターン
+ 最後に、Data Bindingパターンを説明します。Swiftではデータバインディングの仕組みは言語としてサポートされておらず、その実現のために大抵はライブラリを利用しています。Data Bindingパターンを実現する方法の一つとして、bind の仕組みを備えたgenericな型を用意し、それをプロパティとすることが挙げられます。
+ */
+
+//DataBindingパターンの例
+/// 簡易的なデータバインディング機能を実現するクラス
+class DataBindingVariable<E> {
+    var value: E {
+        didSet {
+            // プロパティオブザーバーによりデータの変更時にバインディング先に通知
+            callbacks.forEach { $0(value) }
+        }
+    }
+    
+    // バインディング用のクロージャーを保持
+    private var callbacks: [((E) -> Void)] = []
+    
+    init(_ value: E) {
+        self.value = value
+    }
+    
+    func bind(dataDidChange: @escaping (E) -> Void) {
+        callbacks.append(dataDidChange)
+    }
+}
+
+class DataBindingView {
+    let model: DataBindingModel = DataBindingModel()
+    
+    init() {
+        // データの変更時の処理を記述
+        model.data.bind() { data in
+            print(data)
+        }
+    }
+    
+    func receiveUIEvent() {
+        model.updateData()
+    }
+}
+
+class DataBindingModel {
+    let data = DataBindingVariable(0)
+    
+    func updateData() {
+        data.value += 1
+    }
+}
+
+/*
+ 通知パターンの比較と使い分け
+ 最後に通知のパターンの使い分けについて考えてみます。
+ 
+ 通知のパターンはこれが一番良いというものはありません。用途に応じて適切に通知のパターンを選択する必要があります。まずは通知元と通知先の数の関係に応じて通知のパターンを選択します。その上で、各通知方法のメリット・デメリットを考慮し、採用するのが良いかと思います。
+ 
+ 通知のパターン    通知元と通知先の数    メリット    デメリット
+ Delegate    1：1    プロトコルにより実装すべき通知インタフェースが明確。    通知するメソッドが1つの場合は、記述量に見合わない。
+ Notification    N：N    直接の参照がないオブジェクト間でも通知が可能。オブジェクト間が疎結合。    多用すると処理が追いづらくなる。グローバルなスコープで通知を行うため、プログラマが意図しない処理が動いてしまう可能性がある。
+ KVO    1：N    WKWebViewなどKVOに対応したクラスと相性が良い。    Objective-Cのランタイムが必要。構造体では利用できない。
+ Closure Callback    1：1    処理の依頼部分と完了後の処理を近くに書くことができ、可読性が高い。    クロージャーのネストが増えすぎると逆に可読性が落ちる。
+ Data Binding    1：N    構造体でもKVOと同様のことが実現可能。    言語レベルでサポートされないため、実装なための記述量が増える、もしくはライブラリの採用が必要
+ 少し長めになってしまいましたが、ご覧いただきありがとうございます。間違っている点や不明な点があれば編集リクエストやコメントにて記載いただけますと幸いです。
+ */
+
