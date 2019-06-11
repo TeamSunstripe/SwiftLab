@@ -27,6 +27,8 @@
 		F64EEF25229E3FF300C348D3 /* ParsonalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EEF24229E3FF300C348D3 /* ParsonalModel.swift */; };
 		F64EEF27229E400A00C348D3 /* ParsonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EEF26229E400A00C348D3 /* ParsonalData.swift */; };
 		F656654B22AF599B005DB2CB /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F656654A22AF599B005DB2CB /* UIColor+.swift */; };
+		F65C124422AF7D3A008F008E /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C124322AF7D3A008F008E /* Monster.swift */; };
+		F65C124622AF7F33008F008E /* PlayerHero.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C124522AF7F33008F008E /* PlayerHero.swift */; };
 		F68593832297E9DE00DC7FB1 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68593822297E9DE00DC7FB1 /* DebugView.swift */; };
 		F68593852297EA8200DC7FB1 /* DebugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F68593842297EA8200DC7FB1 /* DebugView.xib */; };
 		F68593872297EBAA00DC7FB1 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F68593862297EBA900DC7FB1 /* Debug.storyboard */; };
@@ -78,6 +80,8 @@
 		F64EEF24229E3FF300C348D3 /* ParsonalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsonalModel.swift; sourceTree = "<group>"; };
 		F64EEF26229E400A00C348D3 /* ParsonalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsonalData.swift; sourceTree = "<group>"; };
 		F656654A22AF599B005DB2CB /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
+		F65C124322AF7D3A008F008E /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
+		F65C124522AF7F33008F008E /* PlayerHero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHero.swift; sourceTree = "<group>"; };
 		F68593822297E9DE00DC7FB1 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		F68593842297EA8200DC7FB1 /* DebugView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebugView.xib; sourceTree = "<group>"; };
 		F68593862297EBA900DC7FB1 /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 		A462CC272293E772001D4BEE /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				F65C123922AF7BE7008F008E /* Device */,
 				F64EEF09229E238F00C348D3 /* FileOperation */,
 			);
 			path = Managers;
@@ -160,6 +165,7 @@
 		A49EE91A2293E72400A612DD /* App */ = {
 			isa = PBXGroup;
 			children = (
+				F65C123A22AF7C67008F008E /* Game */,
 				A462CC282293E788001D4BEE /* Debug */,
 				A462CC272293E772001D4BEE /* Managers */,
 			);
@@ -190,7 +196,7 @@
 		A4EBD15B228C0EC2006A193A /* testCode */ = {
 			isa = PBXGroup;
 			children = (
-				F6A19503229D139700A4DB90 /* Resource */,
+				F6A19503229D139700A4DB90 /* Resources */,
 				A462CC262293E765001D4BEE /* Base */,
 				A4EBD15C228C0EC2006A193A /* AppDelegate.swift */,
 				A4EBD18A228C1881006A193A /* SecondViewController.swift */,
@@ -331,12 +337,92 @@
 			path = extension;
 			sourceTree = "<group>";
 		};
-		F6A19503229D139700A4DB90 /* Resource */ = {
+		F65C123922AF7BE7008F008E /* Device */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Device;
+			sourceTree = "<group>";
+		};
+		F65C123A22AF7C67008F008E /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				F65C123B22AF7C6F008F008E /* RPG */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		F65C123B22AF7C6F008F008E /* RPG */ = {
+			isa = PBXGroup;
+			children = (
+				F65C124222AF7D10008F008E /* MVC */,
+				F65C123F22AF7CD8008F008E /* Commons */,
+				F65C124122AF7CE7008F008E /* Resources */,
+				F65C123C22AF7C8B008F008E /* Managers */,
+			);
+			path = RPG;
+			sourceTree = "<group>";
+		};
+		F65C123C22AF7C8B008F008E /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		F65C123D22AF7C95008F008E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F65C123E22AF7CCF008F008E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		F65C123F22AF7CD8008F008E /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		F65C124022AF7CE0008F008E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F65C124322AF7D3A008F008E /* Monster.swift */,
+				F65C124522AF7F33008F008E /* PlayerHero.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F65C124122AF7CE7008F008E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F65C124222AF7D10008F008E /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				F65C124022AF7CE0008F008E /* Models */,
+				F65C123D22AF7C95008F008E /* Views */,
+				F65C123E22AF7CCF008F008E /* Controllers */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		F6A19503229D139700A4DB90 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
 				F6A19504229D13ED00A4DB90 /* SettingList.plist */,
 			);
-			path = Resource;
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -480,9 +566,11 @@
 				F64EEF14229E3F8900C348D3 /* UserData.swift in Sources */,
 				F64EEF1D229E3FC500C348D3 /* Animal.swift in Sources */,
 				F64EEF1F229E3FCE00C348D3 /* Cat.swift in Sources */,
+				F65C124622AF7F33008F008E /* PlayerHero.swift in Sources */,
 				F64EEF27229E400A00C348D3 /* ParsonalData.swift in Sources */,
 				F656654B22AF599B005DB2CB /* UIColor+.swift in Sources */,
 				F68593832297E9DE00DC7FB1 /* DebugView.swift in Sources */,
+				F65C124422AF7D3A008F008E /* Monster.swift in Sources */,
 				F64EEF21229E3FD400C348D3 /* Dog.swift in Sources */,
 				A49EE9182293E6D100A612DD /* BatteryViewController.swift in Sources */,
 				A4EBD15F228C0EC2006A193A /* ViewController.swift in Sources */,
