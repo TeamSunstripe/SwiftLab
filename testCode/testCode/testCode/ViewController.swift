@@ -921,47 +921,6 @@ class SampleModel {
  NotificationCenterパターンは通知名の文字列で簡単に通知を実装できますが、多用すると処理の流れが追いづらく、スパゲッティプログラムになる可能性もあるので、少し注意が必要です。N対Nの通知が必要な場合や通知したいオブジェクト間に直接の参照関係がない場合にも利用できるため、そのようなケースでは有効です。
  */
 
-
-/*
- 4. KVO（Key-Value Observing: キー値監視）パターン
- KVOは特定のオブジェクトのプロパティ値の変化を監視する仕組みです。
- Objective-Cのランタイム機能を利用しているため、監視対象のオブジェクトはObjective-CのNSObjectを継承している必要があります。Swift4では、監視部分のコードをクロージャーで書けるようになり、より使いやすくなりました。
- */
-// KVOパターン
-class KVOView {
-    var model: KVOModel = KVOModel()
-    
-    // 監視オブジェクトを保持する
-    var observation: NSKeyValueObservation?
-    
-    init() {
-        // modelのdataプロパティをKVOで監視する
-        observation = model.observe(\.data, options: [.new]) { model, change in
-            // model.dataが変化した場合に実行されるクロージャー
-            if let newValue = change.newValue {
-                print(newValue) // print(model.data) でもOK
-            }
-        }
-    }
-    
-    func receiveUIEvent() {
-        model.updateData()
-    }
-}
-
-// NSObjectを継承
-class KVOModel: NSObject {
-    // @objcとdynamicをつける
-    @objc dynamic var data: Int = 0
-    func updateData() {
-        data += 1
-    }
-}
-/* KVOではObjective-Cのランタイム呼び出しによる動的ディスパッチ（実行時に動的にプロパティが決定される）を利用するため、監視するプロパティには@objc属性とdynamicキーワード（dynamic dispatch）が必要です。
- 
- WebKitのWKWebViewのプロパティの中には、titleやurl、estimatedProgressなど、KVOに対応したプロパティ(key-value observing compliant)があり、KVOと相性が良いです。逆に、構造体（struct）はNSObjectを継承することができないため、KVOは利用できません。
- */
-
 /*
  5. Closure Callbackパターン
  次に、よく使われるClosure Callbackパターンを説明します。Closure Callbackパターンでは、完了後の処理をクロージャーで受け取り、そのコールバック用のクロージャーを実行することで通知します。
