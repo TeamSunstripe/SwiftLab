@@ -9,6 +9,24 @@
 import Foundation
 
 /**
+ * struct
+ * RPG の Weapon 構造体
+ */
+struct Weapon {
+    let name: String
+    let strength: Int
+}
+
+/**
+ * struct
+ * RPG の Item 構造体
+ */
+struct Item {
+    let name: String
+    let description: String
+}
+
+/**
  * RPG の Base モンスター
  */
 class Monster: NSObject {
