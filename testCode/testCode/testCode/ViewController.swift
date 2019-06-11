@@ -31,13 +31,6 @@ import UIKit
     }
 }
 
-struct Hero {
-    var name: String
-    var hitPoint: Int
-    let magicPoint: Int
-    let weapons: [Weapon]
-}
-
 struct Weapon {
     let name: String
     let strength: Int
@@ -686,19 +679,6 @@ extension MySubObjvtiveClass {
  * @NSKeyedArchiverClassName
  * クラスに対し、インスタンスをアーカイブする際にNSKeyedArchiverやNSKeyedUnarchiverで利用される名前を指定します
  */
-
-class MonsterEnemy: Monster {
-    var items: [Item?] = [Item(name: "キノコ", description: "回復する"),nil]
-    
-    func die() {
-        print("敵を倒したぞ！！")
-        if let item: Item? = items.randomElement() {
-            if let item = item {
-                print("\(item.name)を落とした")
-            }
-        }
-    }
-}
 
 /***
  * 6つの通知パターン
