@@ -953,55 +953,6 @@ class ClosureCallbackModel {
  print("OKがタップされました")
  }
  */
-/*
- 6. Data Bindingパターン
- 最後に、Data Bindingパターンを説明します。Swiftではデータバインディングの仕組みは言語としてサポートされておらず、その実現のために大抵はライブラリを利用しています。Data Bindingパターンを実現する方法の一つとして、bind の仕組みを備えたgenericな型を用意し、それをプロパティとすることが挙げられます。
- */
-
-//DataBindingパターンの例
-/// 簡易的なデータバインディング機能を実現するクラス
-class DataBindingVariable<E> {
-    var value: E {
-        didSet {
-            // プロパティオブザーバーによりデータの変更時にバインディング先に通知
-            callbacks.forEach { $0(value) }
-        }
-    }
-    
-    // バインディング用のクロージャーを保持
-    private var callbacks: [((E) -> Void)] = []
-    
-    init(_ value: E) {
-        self.value = value
-    }
-    
-    func bind(dataDidChange: @escaping (E) -> Void) {
-        callbacks.append(dataDidChange)
-    }
-}
-
-class DataBindingView {
-    let model: DataBindingModel = DataBindingModel()
-    
-    init() {
-        // データの変更時の処理を記述
-        model.data.bind() { data in
-            print(data)
-        }
-    }
-    
-    func receiveUIEvent() {
-        model.updateData()
-    }
-}
-
-class DataBindingModel {
-    let data = DataBindingVariable(0)
-    
-    func updateData() {
-        data.value += 1
-    }
-}
 
 /*
  通知パターンの比較と使い分け
