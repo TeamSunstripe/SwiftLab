@@ -8,12 +8,12 @@
 
 import UIKit
 
-@IBDesignable class RPGGameBattleViewController: UIViewController {
+@IBDesignable class RPGGameBattleViewController: BaseGameViewController {
     @IBOutlet weak var monsterImageView: UIImageView!
     @IBOutlet weak var monsterAttackButton: UIButton!
     @IBOutlet weak var playerImageView: UIImageView!
     @IBOutlet weak var playerAttackButton: UIButton!
-    @IBOutlet weak var copyrightLabel: UILabel!
+    
     var playerHeros: [PlayerHero?] = [] // 味方
     var steelSword = Weapon(name: "鋼の剣", strength: 20)
     var enemySlimes: [MonsterEnemy?] = [] // 敵
