@@ -12,13 +12,15 @@ class MonsterEnemy: Monster {
     var items: [Item?] = [Item(name: "キノコ", description: "回復する"),nil]  // 落とすアイテムリスト格納
     
     /// モンスターを倒した時の処理
-    func die() {
+    func die() -> Item?{
         print("敵を倒したぞ！！")
         // モンスターを倒した時のロジック
         if let item: Item? = items.randomElement() {
             if let item = item {
                 print("\(item.name)を落とした")
+                return item
             }
         }
+        return nil
     }
 }

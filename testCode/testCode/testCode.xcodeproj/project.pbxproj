@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		570E0BF422A8E4090081BDF8 /* RPGMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570E0BF322A8E4090081BDF8 /* RPGMainViewController.swift */; };
+		570E0BF622A8E4310081BDF8 /* RPGSettingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570E0BF522A8E4310081BDF8 /* RPGSettingListViewController.swift */; };
+		570E0BF922A8E46B0081BDF8 /* RPGStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 570E0BF822A8E46B0081BDF8 /* RPGStartViewController.swift */; };
+		570E0BFB22A8E5840081BDF8 /* RPG.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 570E0BFA22A8E5840081BDF8 /* RPG.storyboard */; };
 		A49EE9182293E6D100A612DD /* BatteryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A49EE9172293E6D100A612DD /* BatteryViewController.swift */; };
 		A4EBD15D228C0EC2006A193A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EBD15C228C0EC2006A193A /* AppDelegate.swift */; };
 		A4EBD15F228C0EC2006A193A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EBD15E228C0EC2006A193A /* ViewController.swift */; };
@@ -26,6 +30,7 @@
 		F64EEF21229E3FD400C348D3 /* Dog.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EEF20229E3FD400C348D3 /* Dog.swift */; };
 		F64EEF25229E3FF300C348D3 /* ParsonalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EEF24229E3FF300C348D3 /* ParsonalModel.swift */; };
 		F64EEF27229E400A00C348D3 /* ParsonalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EEF26229E400A00C348D3 /* ParsonalData.swift */; };
+		F6548CAA22B09D7500516BEC /* RPGGameBattleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6548CA922B09D7500516BEC /* RPGGameBattleViewController.swift */; };
 		F656654B22AF599B005DB2CB /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F656654A22AF599B005DB2CB /* UIColor+.swift */; };
 		F65C124422AF7D3A008F008E /* Monster.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C124322AF7D3A008F008E /* Monster.swift */; };
 		F65C124622AF7F33008F008E /* PlayerHero.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C124522AF7F33008F008E /* PlayerHero.swift */; };
@@ -60,6 +65,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		570E0BF322A8E4090081BDF8 /* RPGMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPGMainViewController.swift; sourceTree = "<group>"; };
+		570E0BF522A8E4310081BDF8 /* RPGSettingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPGSettingListViewController.swift; sourceTree = "<group>"; };
+		570E0BF822A8E46B0081BDF8 /* RPGStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPGStartViewController.swift; sourceTree = "<group>"; };
+		570E0BFA22A8E5840081BDF8 /* RPG.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RPG.storyboard; sourceTree = "<group>"; };
 		A49EE9172293E6D100A612DD /* BatteryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryViewController.swift; sourceTree = "<group>"; };
 		A4EBD159228C0EC2006A193A /* testCode.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = testCode.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4EBD15C228C0EC2006A193A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +94,7 @@
 		F64EEF20229E3FD400C348D3 /* Dog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dog.swift; sourceTree = "<group>"; };
 		F64EEF24229E3FF300C348D3 /* ParsonalModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsonalModel.swift; sourceTree = "<group>"; };
 		F64EEF26229E400A00C348D3 /* ParsonalData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParsonalData.swift; sourceTree = "<group>"; };
+		F6548CA922B09D7500516BEC /* RPGGameBattleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RPGGameBattleViewController.swift; sourceTree = "<group>"; };
 		F656654A22AF599B005DB2CB /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		F65C124322AF7D3A008F008E /* Monster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Monster.swift; sourceTree = "<group>"; };
 		F65C124522AF7F33008F008E /* PlayerHero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerHero.swift; sourceTree = "<group>"; };
@@ -126,6 +136,49 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		570E0BEA22A8E2EE0081BDF8 /* SimpleRPG */ = {
+			isa = PBXGroup;
+			children = (
+				F6548CA522B09CF600516BEC /* Managers */,
+				F6548CA422B09CEB00516BEC /* Resources */,
+				F6548CA322B09CE200516BEC /* Commons */,
+				F6548CA222B09CD300516BEC /* MVC */,
+			);
+			path = SimpleRPG;
+			sourceTree = "<group>";
+		};
+		570E0BEB22A8E30C0081BDF8 /* storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				570E0BFA22A8E5840081BDF8 /* RPG.storyboard */,
+			);
+			path = storyboard;
+			sourceTree = "<group>";
+		};
+		570E0BF022A8E3D40081BDF8 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				570E0BF322A8E4090081BDF8 /* RPGMainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		570E0BF122A8E3D90081BDF8 /* Setting */ = {
+			isa = PBXGroup;
+			children = (
+				570E0BF522A8E4310081BDF8 /* RPGSettingListViewController.swift */,
+			);
+			path = Setting;
+			sourceTree = "<group>";
+		};
+		570E0BF722A8E4430081BDF8 /* init */ = {
+			isa = PBXGroup;
+			children = (
+				570E0BF822A8E46B0081BDF8 /* RPGStartViewController.swift */,
+			);
+			path = init;
+			sourceTree = "<group>";
+		};
 		A461CA8B2293B3F4002C2D4B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,6 +230,7 @@
 		A49EE91A2293E72400A612DD /* App */ = {
 			isa = PBXGroup;
 			children = (
+				570E0BEA22A8E2EE0081BDF8 /* SimpleRPG */,
 				F65C124722AF8225008F008E /* Study */,
 				F65C123A22AF7C67008F008E /* Game */,
 				A462CC282293E788001D4BEE /* Debug */,
@@ -332,6 +386,71 @@
 				F64EEF24229E3FF300C348D3 /* ParsonalModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F6548CA122B09C7900516BEC /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				F6548CA922B09D7500516BEC /* RPGGameBattleViewController.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		F6548CA222B09CD300516BEC /* MVC */ = {
+			isa = PBXGroup;
+			children = (
+				F6548CA822B09D0D00516BEC /* Controllers */,
+				F6548CA722B09D0600516BEC /* Views */,
+				F6548CA622B09CFF00516BEC /* Models */,
+			);
+			path = MVC;
+			sourceTree = "<group>";
+		};
+		F6548CA322B09CE200516BEC /* Commons */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Commons;
+			sourceTree = "<group>";
+		};
+		F6548CA422B09CEB00516BEC /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				570E0BEB22A8E30C0081BDF8 /* storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F6548CA522B09CF600516BEC /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		F6548CA622B09CFF00516BEC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F6548CA722B09D0600516BEC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F6548CA822B09D0D00516BEC /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				570E0BF722A8E4430081BDF8 /* init */,
+				570E0BF022A8E3D40081BDF8 /* Main */,
+				F6548CA122B09C7900516BEC /* Game */,
+				570E0BF122A8E3D90081BDF8 /* Setting */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 		F656654822AF5956005DB2CB /* UI */ = {
@@ -652,6 +771,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4EBD167228C0EC8006A193A /* LaunchScreen.storyboard in Resources */,
+				570E0BFB22A8E5840081BDF8 /* RPG.storyboard in Resources */,
 				F68593872297EBAA00DC7FB1 /* Debug.storyboard in Resources */,
 				F68593852297EA8200DC7FB1 /* DebugView.xib in Resources */,
 				A4EBD164228C0EC8006A193A /* Assets.xcassets in Resources */,
@@ -681,15 +801,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				570E0BF422A8E4090081BDF8 /* RPGMainViewController.swift in Sources */,
 				F64EEF19229E3FB200C348D3 /* ThingModel.swift in Sources */,
 				F65C125F22AF993E008F008E /* testCostomColor.swift in Sources */,
+				570E0BF922A8E46B0081BDF8 /* RPGStartViewController.swift in Sources */,
 				F68593892297EBBF00DC7FB1 /* DebugViewController.swift in Sources */,
 				A4EBD18B228C1881006A193A /* SecondViewController.swift in Sources */,
 				F64EEF12229E3F7E00C348D3 /* UserModel.swift in Sources */,
 				F64EEF14229E3F8900C348D3 /* UserData.swift in Sources */,
 				F64EEF1D229E3FC500C348D3 /* Animal.swift in Sources */,
+				570E0BF622A8E4310081BDF8 /* RPGSettingListViewController.swift in Sources */,
 				F64EEF1F229E3FCE00C348D3 /* Cat.swift in Sources */,
 				F65C124F22AF82C2008F008E /* KVOView.swift in Sources */,
+				F6548CAA22B09D7500516BEC /* RPGGameBattleViewController.swift in Sources */,
 				F65C124622AF7F33008F008E /* PlayerHero.swift in Sources */,
 				F64EEF27229E400A00C348D3 /* ParsonalData.swift in Sources */,
 				F656654B22AF599B005DB2CB /* UIColor+.swift in Sources */,

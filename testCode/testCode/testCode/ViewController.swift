@@ -14,7 +14,6 @@ import UIKit
  */
 @testable import AddressBookUI
 
-
 @IBDesignable class Swift4CustomButton:UIButton {
     
     @IBInspectable
@@ -33,12 +32,8 @@ import UIKit
 
 @IBDesignable class ViewController: UIViewController {
     @IBOutlet weak var openButton: Swift4CustomButton!
-    var timetable: Dictionary<AnyHashable, Any>?
     
-    var player_yoshihiko: PlayerHero? = nil
-    var steelSword = Weapon(name: "鋼の剣", strength: 20)
-    var enemy_slime: MonsterEnemy? = nil
-    var observation:NSKeyValueObservation? = nil
+    var timetable: Dictionary<AnyHashable, Any>?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,7 +59,8 @@ import UIKit
                 print( tt["_\(i)"]!)
             }
         }
-        if var tt: Dictionary<AnyHashable?, Any?> = timetable {
+        /*
+        if var tt: Dictionary<AnyHashable, Any> = timetable {
             timetable = (tt as! Dictionary<AnyHashable, Any>)
             for (key,value) in tt {
                 if let _key = key,let _value = value,let _data = tt[_key] as? String {
@@ -97,7 +93,8 @@ import UIKit
                 print(timetable!.isEmpty)
             }
         }
-        
+         */
+
         var dictionary:[String:Int] = ["one": 1, "two": 2, "three": 3]  // ["one": 1, "two": 2, "three": 3]
         dictionary["one"] = nil                               // ["two": 2, "three": 3]
         //削除する値を取得したい場合は、removeValueForKeyを利用します。
@@ -379,62 +376,6 @@ O
          }
          */
         
-        struct Hero_ {
-            let name: String
-            let hitPoint: Int
-            let magicPoint: Int
-            let weapon: Weapon
-        }
-        
-        struct Enemy {
-            let name: String
-            let hitPoint: Int
-        }
-        
-        steelSword = Weapon(name: "鋼の剣", strength: 20)
-        let yoshihiko = Hero(name: "勇者ヨシヒコ", hitPoint: 90, magicPoint: 12, weapons: [steelSword])
-        
-        print(yoshihiko[keyPath: \Hero.name]) // "勇者ヨシヒコ"
-        print(yoshihiko[keyPath: \Hero.weapons.first!.name]) // "鋼の剣"
-        
-        player_yoshihiko = PlayerHero(name: "勇者ヨシヒコ", hitPoint: 90)
-        enemy_slime = MonsterEnemy(name: "スライム", hitPoint: 10)
-        
-        if let enemy_slime = enemy_slime,let player_yoshihiko = player_yoshihiko {
-            
-            // 監視オブジェクトを保持する
-            enemy_slime.damaged = enemy_slime.observe(\.hitPoint, options: [.new,.old], changeHandler: { me,change in
-                let diff = (change.newValue ?? 0) - (change.oldValue ?? 0)
-                let isDamaged = diff < 0
-                if me.hitPoint > 0 {
-                    print("\(me.name)::HP(\(me.hitPoint))は、HPを\(abs(diff))\(isDamaged ? "消費した" : "回復した")")
-                } else {
-                    print("\(me.name)は死亡した")
-                    me.die()
-                }
-            })
-            
-            // 監視オブジェクトを保持する
-            player_yoshihiko.damaged = player_yoshihiko.observe(\.hitPoint, options: [.new,.old], changeHandler: { me,change in
-                let diff = (change.newValue ?? 0) - (change.oldValue ?? 0)
-                let isDamaged = diff < 0
-                if me.hitPoint > 0 {
-                    print("\(me.name)::HP(\(me.hitPoint))は、HPを\(abs(diff))\(isDamaged ? "消費した" : "回復した")")
-                } else {
-                    print("\(me.name)は死亡した")
-                }
-            })
-        }
-        
-        let steelSword1 = Weapon(name: "鋼の剣", strength: 20)
-        let yoshihiko1 = Hero_(name: "勇者ヨシヒコ", hitPoint: 90, magicPoint: 12, weapon: steelSword1)
-        
-        let keyPath1 = \Hero_.weapon
-        let keyPath2 = keyPath1.appending(path: \Weapon.name)// 名前(name)を追加
-        
-        print(yoshihiko1[keyPath: keyPath1]) // "Weapon(name: "鋼の剣", strength: 20)"
-        print(yoshihiko1[keyPath: keyPath2]) // "鋼の剣"
-        
         /**/
         /**
          *   はじめに
@@ -461,6 +402,12 @@ O
         
     }
     
+    // TODO:MenuButtons
+    @IBAction func tapStartSimpleGame(_ sender: Any) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "RPG", bundle: nil)
+        guard let nextView = storyboard.instantiateInitialViewController() else { return }
+        present(nextView, animated: true, completion: nil)
+    }
     /* @NSCopying
      * ストアドプロパティのセッターでコピーした値をセットします
      * Objective-Cのcopy属性と同様
@@ -479,28 +426,6 @@ O
         // 引数がnilでない場合の処理
         print("unwrappedName : ")
         print(unwrappedName) // →
-    }
-    
-    @IBAction func slimeAttack(_ sender: Any) {
-        if let enemy_slime = enemy_slime,let player_yoshihiko = player_yoshihiko {
-            print("\(enemy_slime.name)の攻撃!")
-            // スライムの攻撃!
-            enemy_slime.attack(to: player_yoshihiko,from: enemy_slime)
-            // "勇者ヨシヒコは、HPを5消費した"と出力される
-        } else {
-            print("何も起こらなかった")
-        }
-    }
-    
-    @IBAction func heroAttack(_ sender: Any) {
-        if let enemy_slime = enemy_slime,let player_yoshihiko = player_yoshihiko {
-            print("\(player_yoshihiko.name)の攻撃!")
-            // 勇者ヨシヒコの攻撃!
-            player_yoshihiko.attack(to: enemy_slime,from: player_yoshihiko)
-            // "勇者ヨシヒコは、HPを5消費した"と出力される
-        } else {
-            print("何も起こらなかった")
-        }
     }
     // 定義部分
     // Swift4 @autoclosure クロージャーの設定
@@ -893,32 +818,6 @@ class SampleModel {
  NotificationCenterパターンは通知名の文字列で簡単に通知を実装できますが、多用すると処理の流れが追いづらく、スパゲッティプログラムになる可能性もあるので、少し注意が必要です。N対Nの通知が必要な場合や通知したいオブジェクト間に直接の参照関係がない場合にも利用できるため、そのようなケースでは有効です。
  */
 
-/*
- 5. Closure Callbackパターン
- 次に、よく使われるClosure Callbackパターンを説明します。Closure Callbackパターンでは、完了後の処理をクロージャーで受け取り、そのコールバック用のクロージャーを実行することで通知します。
- */
-// ClosureCallbackパターン
-class ClosureCallbackView {
-    var model: ClosureCallbackModel = ClosureCallbackModel()
-    
-    func receiveUIEvent() {
-        // 完了後の処理をクロージャーで指定する
-        // 末尾のクロージャーの引数名は省略できる（trailing closure記法）
-        model.updateData { data in
-            print(data)
-        }
-    }
-}
-
-class ClosureCallbackModel {
-    var data: Int = 0
-    
-    // 完了後の処理を引数のクロージャーで受け取って実行する
-    func updateData(completion: (_ data: Int) -> Void) {
-        data += 1
-        completion(data)
-    }
-}
 /*
  Closure Callbackパターンは通知完了後の処理を呼び出しメソッドの近くに書けるため、可読性が高くなります。ただし複数の非同期処理を逐次実行する場合は、クロージャーのネストが深くならないように注意が必要です。
  */

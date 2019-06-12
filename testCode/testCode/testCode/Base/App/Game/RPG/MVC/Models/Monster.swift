@@ -24,6 +24,8 @@ struct Weapon {
 struct Item {
     let name: String
     let description: String
+    let addPoint: Int? = nil
+    let addStrength: Int? = nil
 }
 
 /**
@@ -32,6 +34,7 @@ struct Item {
 class Monster: NSObject {
     
     var name: String // 名前
+    let URLString: String // 画像URL
     let power: Int = 5 // 攻撃力
     
     // ヒットポイント：Objecive-C からでも読める
@@ -42,12 +45,27 @@ class Monster: NSObject {
     init(name: String, hitPoint: Int) {
         self.name = name
         self.hitPoint = hitPoint
+        self.URLString = ""
         super.init()
     }
     
+    init(name: String, urlString URLString: String, hitPoint: Int) {
+        self.name = name
+        self.URLString = URLString
+        self.hitPoint = hitPoint
+        super.init()
+    }
     /** method **/
     /// アタック（モンスターの攻撃）
     func attack(to player: Monster , from enemy: Monster) {
-        player.hitPoint -= enemy.power
+        if enemy.isKind(of: PlayerHero.self) {
+            let p: PlayerHero = enemy as! PlayerHero
+            let weapons = p.hero.weapons.map{ $0.strength }
+            let damagePoint = enemy.power + weapons.reduce(0, {$0 + $1 })
+            print("damagePoint : \(damagePoint)")
+            player.hitPoint -= damagePoint
+        } else {
+            player.hitPoint -= enemy.power
+        }
     }
 }

@@ -55,20 +55,12 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eep-av-PUc">
-                                <rect key="frame" x="123" y="124" width="130" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbA-Kh-K7u" userLabel="SimpleRPG">
+                                <rect key="frame" x="149" y="423" width="77" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="スライム：Attack!!"/>
+                                <state key="normal" title="SimpleRPG"/>
                                 <connections>
-                                    <action selector="slimeAttack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rYK-3g-N6G"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cOK-HD-h62">
-                                <rect key="frame" x="108" y="392" width="157" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="勇者：Attack!!"/>
-                                <connections>
-                                    <action selector="heroAttack:" destination="BYZ-38-t0r" eventType="touchUpInside" id="QlA-Po-BGE"/>
+                                    <action selector="tapStartSimpleGame:" destination="BYZ-38-t0r" eventType="touchUpInside" id="02Z-ND-VWm"/>
                                 </connections>
                             </button>
                         </subviews>
