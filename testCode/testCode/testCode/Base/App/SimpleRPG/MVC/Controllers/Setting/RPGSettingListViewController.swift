@@ -1,9 +1,9 @@
 //
 //  RPGSettingListViewController.swift
-//  testCode
+//  App/SimpleRPG
 //
 //  Created by YouOhshima on 2019/06/06.
-//  Copyright © 2019年 Shinkai Asari. All rights reserved.
+//  Copyright © 2019年 Team SunStripe. All rights reserved.
 //
 
 import UIKit
@@ -11,5 +11,10 @@ import UIKit
 @IBDesignable class RPGSettingListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    @IBAction func closeButton(_ sender: Any) {
+        dismiss(animated: true, completion: {
+            print("設定画面を閉じる")
+        })
     }
 }

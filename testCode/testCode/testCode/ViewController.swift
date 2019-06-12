@@ -14,7 +14,6 @@ import UIKit
  */
 @testable import AddressBookUI
 
-
 @IBDesignable class Swift4CustomButton:UIButton {
     
     @IBInspectable
@@ -33,15 +32,8 @@ import UIKit
 
 @IBDesignable class ViewController: UIViewController {
     @IBOutlet weak var openButton: Swift4CustomButton!
-    @IBOutlet weak var playerImageView: UIImageView!
-    @IBOutlet weak var enemyImageView: UIImageView!
     
     var timetable: Dictionary<AnyHashable, Any>?
-    
-    var playerHeros: [PlayerHero?] = [] // 味方
-    var steelSword = Weapon(name: "鋼の剣", strength: 20)
-    var enemySlimes: [MonsterEnemy?] = [] // 敵
-    var observation:NSKeyValueObservation? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -384,93 +376,6 @@ O
          }
          */
         
-        struct Hero_ {
-            let name: String
-            let hitPoint: Int
-            let magicPoint: Int
-            let weapon: Weapon
-        }
-        
-        struct Enemy {
-            let name: String
-            let hitPoint: Int
-        }
-        
-        steelSword = Weapon(name: "鋼の剣", strength: 20)
-        let yoshihiko = Hero(name: "勇者ヨシヒコ", hitPoint: 90, magicPoint: 12, weapons: [steelSword], items: [])
-        
-        print(yoshihiko[keyPath: \Hero.name]) // "勇者ヨシヒコ"
-        print(yoshihiko[keyPath: \Hero.weapons.first!.name]) // "鋼の剣"
-        
-        playerHeros = [PlayerHero(name: "勇者ヨシヒコ",urlString: "https://image.showroom-live.com/showroom-prod/image/avatar/1018274.png", hitPoint: 90)]
-        
-        enemySlimes = [MonsterEnemy(name: "スライム",urlString: "https://camo.qiitausercontent.com/d78e2729745400d7bc4e3b93e268231c3a3488da/68747470733a2f2f71696974612d696d6167652d73746f72652e73332e616d617a6f6e6177732e636f6d2f302f3233323731352f65633738636139302d666461392d653035322d353464372d3331323231333761356365332e706e67", hitPoint: 10)]
-        
-        if !enemySlimes.isEmpty, let enemySlime = enemySlimes.first,let enemy_slime :MonsterEnemy = enemySlime,!playerHeros.isEmpty, let playerHero = playerHeros.first,let player_hero:PlayerHero = playerHero {
-            
-            player_hero.hero.weapons = [steelSword]
-            
-            //モンスター
-            monsterImage(imageView: enemyImageView, URLString: enemy_slime.URLString)
-            // 監視オブジェクトを保持する
-            enemy_slime.damaged = enemy_slime.observe(\.hitPoint, options: [.new,.old], changeHandler: { me,change in
-                let diff = (change.newValue ?? 0) - (change.oldValue ?? 0)
-                let isDamaged = diff < 0
-                if me.hitPoint > 0 {
-                    print("\(me.name)::HP(\(me.hitPoint))は、HPを\(abs(diff))\(isDamaged ? "消費した" : "回復した")")
-                } else {
-                    if !self.enemyImageView.isHidden {
-                        print("\(me.name)は死亡した")
-                        player_hero.getItem(item: (me.die() ) )
-                        
-                        UIView.animate(withDuration: 3.0, delay: 2.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-                            self.enemyImageView.alpha = 0.0
-                        }, completion: { finished in
-                            if finished {
-                                self.enemyImageView.isHidden = true
-                            }
-                        })
-                        
-                    } else {
-                        
-                    }
-                }
-            })
-            
-            monsterImage(imageView: playerImageView, URLString: player_hero.URLString)
-            // 監視オブジェクトを保持する
-            player_hero.damaged = player_hero.observe(\.hitPoint, options: [.new,.old], changeHandler: { me,change in
-                let diff = (change.newValue ?? 0) - (change.oldValue ?? 0)
-                let isDamaged = diff < 0
-                if me.hitPoint > 0 {
-                    print("\(me.name)::HP(\(me.hitPoint))は、HPを\(abs(diff))\(isDamaged ? "消費した" : "回復した")")
-                } else {
-                    if !self.playerImageView.isHidden {
-                        print("\(me.name)は死亡した")
-                        UIView.animate(withDuration: 3.0, delay: 2.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-                            self.playerImageView.alpha = 0.0
-                        }, completion: { finished in
-                            if finished {
-                                self.playerImageView.isHidden = true
-                            }
-                        })
-                        
-                    } else {
-                        
-                    }
-                }
-            })
-        }
-        
-        let steelSword1 = Weapon(name: "鋼の剣", strength: 20)
-        let yoshihiko1 = Hero_(name: "勇者ヨシヒコ", hitPoint: 90, magicPoint: 12, weapon: steelSword1)
-        
-        let keyPath1 = \Hero_.weapon
-        let keyPath2 = keyPath1.appending(path: \Weapon.name)// 名前(name)を追加
-        
-        print(yoshihiko1[keyPath: keyPath1]) // "Weapon(name: "鋼の剣", strength: 20)"
-        print(yoshihiko1[keyPath: keyPath2]) // "鋼の剣"
-        
         /**/
         /**
          *   はじめに
@@ -497,60 +402,11 @@ O
         
     }
     
-    @IBAction func slimeAttack(_ sender: Any) {
-        if !enemySlimes.isEmpty, let enemySlime = enemySlimes.first,let enemy_slime = enemySlime,!playerHeros.isEmpty, let playerHero = playerHeros.first,let player_hero = playerHero {
-            print("\(enemy_slime.name)の攻撃!")
-            // スライムの攻撃!
-            enemy_slime.attack(to: player_hero,from: enemy_slime)
-            // "勇者ヨシヒコは、HPを5消費した"と出力される
-        } else {
-            print(enemySlimes)
-            let enemySlime = enemySlimes.first
-            print(enemySlime)
-            print("何も起こらなかった")
-        }
-    }
-    
-    @IBAction func heroAttack(_ sender: Any) {
-        if !enemySlimes.isEmpty, let enemySlime = enemySlimes.first,let enemy_slime = enemySlime,!playerHeros.isEmpty, let playerHero = playerHeros.first,let player_hero = playerHero {
-            print("\(player_hero.name)の攻撃!")
-            // 勇者ヨシヒコの攻撃!
-            player_hero.attack(to: enemy_slime,from: player_hero)
-            // "勇者ヨシヒコは、HPを5消費した"と出力される
-        } else {
-            print(enemySlimes)
-            let enemySlime = enemySlimes.first
-            print(enemySlime)
-            print("何も起こらなかった")
-        }
-    }
-    
-    func monsterImage(imageView: UIImageView,URLString: String) {
-        //http://livedoor.blogimg.jp/amosaic/imgs/4/3/4360becd.jpg
-        let imageURLString:String? = URLString
-        
-        if let URLString = imageURLString {
-            let url = URL(string: URLString)
-            do {
-                let data = try Data(contentsOf: url!)
-                let image = UIImage(data: data)
-                imageView.image = image
-                
-            } catch let err {
-                print("Error : \(err.localizedDescription)")
-            }
-            URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
-                
-                if error != nil {
-                    print(error!)
-                    return
-                }
-                
-                DispatchQueue.main.async {
-                    imageView.image = UIImage(data: data!)
-                }
-            }).resume()
-        }
+    // TODO:MenuButtons
+    @IBAction func tapStartSimpleGame(_ sender: Any) {
+        let storyboard: UIStoryboard = UIStoryboard(name: "RPG", bundle: nil)
+        guard let nextView = storyboard.instantiateInitialViewController() else { return }
+        present(nextView, animated: true, completion: nil)
     }
     /* @NSCopying
      * ストアドプロパティのセッターでコピーした値をセットします
