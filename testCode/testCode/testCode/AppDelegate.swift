@@ -3,7 +3,7 @@
 //  testCode
 //
 //  Created by YouOhshima on 2019/05/15.
-//  Copyright © 2019 Team SunStripe. All rights reserved.
+//  Copyright © 2019年 Team SunStripe. All rights reserved.
 //
 
 import UIKit
@@ -15,44 +15,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     #if swift(>=4.2)
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        print("%@",FileOperation.shared.openResourcePlist(resource: "SettingList") as Any)
-        print("%@",FileOperation.shared.documentDirectoryFile(filePath: "SettingList.plist") as Any)
-        print("%@",FileOperation.shared.bundleFile(resource: "SettingList",type: "plist") as Any)
-        
-        //存在確認
-        if FileOperation.shared.isFileExists(filePath: "SettingList.plist") {
-            
-        }
-        //コピー処理
-        if FileOperation.shared.copyFiles(atPath: "SettingList.plist", toPath: "SettingList.plist") {
-            
-        }
-        //ファイル名変更処理
-        if FileOperation.shared.moveFiles(atPath: "SettingList.plist", toPath: "SettingList2.plist") {
-            
-        }
-        //ファイル削除
-        if FileOperation.shared.removeFile(atPath: "SettingList.plist") {
-            
-        }
-        //ディレクトリー作成
-        if FileOperation.shared.createDirectory(atDirectoryPath: "Setting") {
-            
-        }
-        //ディレクトリー削除
-        if FileOperation.shared.removeDirectory(atDirectoryPath: "Setting") {
-            
-        }
-        if FileOperation.shared.writeResource(resourcePlist: "sample.plist", putData: ["sample":[:]]) {
-            print("%@",FileOperation.shared.openResource(resourcePlist: "sample.plist")!)
-            let filePath = FileOperation.shared.documentDirectoryFile(filePath: "sample.plist")!
-            if FileOperation.shared.isFileExists(filePath: FileOperation.shared.documentDirectoryFile(filePath: "sample.plist")!) {
-                if FileOperation.shared.removeFile(atPath: filePath) {
-                    print("%@",FileOperation.shared.openResource(resourcePlist: "sample.plist") as Any)
-                }
-            }
-        }
-        
         
     return true
     }

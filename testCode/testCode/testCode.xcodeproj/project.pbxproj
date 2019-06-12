@@ -20,7 +20,7 @@
 		A4EBD172228C0EC8006A193A /* testCodeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EBD171228C0EC8006A193A /* testCodeTests.swift */; };
 		A4EBD17D228C0EC8006A193A /* testCodeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EBD17C228C0EC8006A193A /* testCodeUITests.swift */; };
 		A4EBD18B228C1881006A193A /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EBD18A228C1881006A193A /* SecondViewController.swift */; };
-		F64EEF0B229E23C700C348D3 /* FileOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EEF0A229E23C700C348D3 /* FileOperation.swift */; };
+		F64EEF0B229E23C700C348D3 /* FilePlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EEF0A229E23C700C348D3 /* FilePlist.swift */; };
 		F64EEF12229E3F7E00C348D3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EEF11229E3F7E00C348D3 /* UserModel.swift */; };
 		F64EEF14229E3F8900C348D3 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EEF13229E3F8900C348D3 /* UserData.swift */; };
 		F64EEF19229E3FB200C348D3 /* ThingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64EEF18229E3FB100C348D3 /* ThingModel.swift */; };
@@ -46,6 +46,10 @@
 		F68593892297EBBF00DC7FB1 /* DebugViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68593882297EBBF00DC7FB1 /* DebugViewController.swift */; };
 		F6A19505229D13ED00A4DB90 /* SettingList.plist in Resources */ = {isa = PBXBuildFile; fileRef = F6A19504229D13ED00A4DB90 /* SettingList.plist */; };
 		F6C32AA822B0BFE1007262E5 /* BaseGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C32AA722B0BFE0007262E5 /* BaseGameViewController.swift */; };
+		F6C32AAD22B0CC80007262E5 /* String+CryptoAlgorithm.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C32AAC22B0CC80007262E5 /* String+CryptoAlgorithm.swift */; };
+		F6C32AB422B0D2F7007262E5 /* Data+Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C32AB322B0D2F7007262E5 /* Data+Crypto.swift */; };
+		F6C32AB622B0D38A007262E5 /* HMAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C32AB522B0D38A007262E5 /* HMAC.swift */; };
+		F6C32AB822B0D3B9007262E5 /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6C32AB722B0D3B9007262E5 /* Digest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,7 +89,7 @@
 		A4EBD17C228C0EC8006A193A /* testCodeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCodeUITests.swift; sourceTree = "<group>"; };
 		A4EBD17E228C0EC8006A193A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A4EBD18A228C1881006A193A /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
-		F64EEF0A229E23C700C348D3 /* FileOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileOperation.swift; sourceTree = "<group>"; };
+		F64EEF0A229E23C700C348D3 /* FilePlist.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePlist.swift; sourceTree = "<group>"; };
 		F64EEF11229E3F7E00C348D3 /* UserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		F64EEF13229E3F8900C348D3 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		F64EEF18229E3FB100C348D3 /* ThingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThingModel.swift; sourceTree = "<group>"; };
@@ -111,6 +115,10 @@
 		F68593882297EBBF00DC7FB1 /* DebugViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugViewController.swift; sourceTree = "<group>"; };
 		F6A19504229D13ED00A4DB90 /* SettingList.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SettingList.plist; sourceTree = "<group>"; };
 		F6C32AA722B0BFE0007262E5 /* BaseGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseGameViewController.swift; sourceTree = "<group>"; };
+		F6C32AAC22B0CC80007262E5 /* String+CryptoAlgorithm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+CryptoAlgorithm.swift"; sourceTree = "<group>"; };
+		F6C32AB322B0D2F7007262E5 /* Data+Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Crypto.swift"; sourceTree = "<group>"; };
+		F6C32AB522B0D38A007262E5 /* HMAC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HMAC.swift; sourceTree = "<group>"; };
+		F6C32AB722B0D3B9007262E5 /* Digest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Digest.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +207,8 @@
 		A462CC262293E765001D4BEE /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				F6C32AAF22B0D2C2007262E5 /* Data */,
+				F6C32AAA22B0CBEC007262E5 /* String */,
 				F656654822AF5956005DB2CB /* UI */,
 				A49EE91A2293E72400A612DD /* App */,
 			);
@@ -299,7 +309,7 @@
 		F64EEF09229E238F00C348D3 /* FileOperation */ = {
 			isa = PBXGroup;
 			children = (
-				F64EEF0A229E23C700C348D3 /* FileOperation.swift */,
+				F64EEF0A229E23C700C348D3 /* FilePlist.swift */,
 			);
 			path = FileOperation;
 			sourceTree = "<group>";
@@ -669,6 +679,40 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		F6C32AAA22B0CBEC007262E5 /* String */ = {
+			isa = PBXGroup;
+			children = (
+				F6C32AAB22B0CBF9007262E5 /* Algorithm */,
+			);
+			path = String;
+			sourceTree = "<group>";
+		};
+		F6C32AAB22B0CBF9007262E5 /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				F6C32AAC22B0CC80007262E5 /* String+CryptoAlgorithm.swift */,
+			);
+			path = Algorithm;
+			sourceTree = "<group>";
+		};
+		F6C32AAF22B0D2C2007262E5 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				F6C32AB222B0D2E8007262E5 /* Algorithm */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		F6C32AB222B0D2E8007262E5 /* Algorithm */ = {
+			isa = PBXGroup;
+			children = (
+				F6C32AB322B0D2F7007262E5 /* Data+Crypto.swift */,
+				F6C32AB522B0D38A007262E5 /* HMAC.swift */,
+				F6C32AB722B0D3B9007262E5 /* Digest.swift */,
+			);
+			path = Algorithm;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -817,12 +861,15 @@
 				F64EEF1F229E3FCE00C348D3 /* Cat.swift in Sources */,
 				F65C124F22AF82C2008F008E /* KVOView.swift in Sources */,
 				F6548CAA22B09D7500516BEC /* RPGGameBattleViewController.swift in Sources */,
+				F6C32AB822B0D3B9007262E5 /* Digest.swift in Sources */,
 				F6C32AA822B0BFE1007262E5 /* BaseGameViewController.swift in Sources */,
 				F65C124622AF7F33008F008E /* PlayerHero.swift in Sources */,
 				F64EEF27229E400A00C348D3 /* ParsonalData.swift in Sources */,
 				F656654B22AF599B005DB2CB /* UIColor+.swift in Sources */,
 				F68593832297E9DE00DC7FB1 /* DebugView.swift in Sources */,
+				F6C32AAD22B0CC80007262E5 /* String+CryptoAlgorithm.swift in Sources */,
 				F65C124422AF7D3A008F008E /* Monster.swift in Sources */,
+				F6C32AB622B0D38A007262E5 /* HMAC.swift in Sources */,
 				F64EEF21229E3FD400C348D3 /* Dog.swift in Sources */,
 				A49EE9182293E6D100A612DD /* BatteryViewController.swift in Sources */,
 				F65C125A22AF903B008F008E /* DataBindingModel.swift in Sources */,
@@ -832,8 +879,9 @@
 				F65C125122AF832C008F008E /* KVOModel.swift in Sources */,
 				F64EEF25229E3FF300C348D3 /* ParsonalModel.swift in Sources */,
 				F64EEF1B229E3FB900C348D3 /* ThingData.swift in Sources */,
-				F64EEF0B229E23C700C348D3 /* FileOperation.swift in Sources */,
+				F64EEF0B229E23C700C348D3 /* FilePlist.swift in Sources */,
 				F65C125322AF87BE008F008E /* MonsterEnemy.swift in Sources */,
+				F6C32AB422B0D2F7007262E5 /* Data+Crypto.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1020,6 +1068,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.main.sunstripe.app.testCode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1041,6 +1090,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.main.sunstripe.app.testCode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1204,6 +1254,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = jp.main.sunstripe.app.testCode;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
