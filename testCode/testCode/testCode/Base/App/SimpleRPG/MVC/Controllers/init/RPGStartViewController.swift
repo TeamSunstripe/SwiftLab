@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class RPGStartViewController: UIViewController {
+@IBDesignable class RPGStartViewController: BaseGameViewController {
     @IBOutlet weak var StartImageView: UIImageView!
     var timer:Timer = Timer()
     

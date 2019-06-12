@@ -35,6 +35,7 @@
                     </view>
                     <connections>
                         <outlet property="StartImageView" destination="rzv-78-bRI" id="Mkb-AN-IwA"/>
+                        <outlet property="copyrightLabel" destination="BWm-GS-HzA" id="0Ub-0G-guB"/>
                         <segue destination="bg9-7E-rjZ" kind="show" identifier="toSimpleGameMain" id="bCr-3i-sNP"/>
                     </connections>
                 </viewController>
@@ -101,7 +102,7 @@
                     <connections>
                         <outlet property="MainImageView" destination="mza-9B-y3q" id="okz-oy-6hG"/>
                         <outlet property="MainTitleLabel" destination="WsP-ID-gmH" id="baB-Hn-KpS"/>
-                        <outlet property="copyrightLabel" destination="PFe-Rd-tSK" id="t58-G2-38L"/>
+                        <outlet property="copyrightLabel" destination="PFe-Rd-tSK" id="mH8-KZ-ugq"/>
                         <outlet property="endButton" destination="UGC-QM-HpW" id="8xc-z0-i6h"/>
                         <outlet property="gameSettingButton" destination="3yq-7S-sLL" id="Ote-uz-lbr"/>
                         <outlet property="gameStartButton" destination="5Xa-hA-WD8" id="EH8-UC-yiT"/>
@@ -136,13 +137,6 @@
                                 <rect key="frame" x="67" y="431" width="240" height="128"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="（C）SimpleRPG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RuX-cy-ida">
-                                <rect key="frame" x="-2" y="646" width="375" height="21"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E8y-Xd-z8T">
                                 <rect key="frame" x="107" y="567" width="157" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -152,6 +146,13 @@
                                     <action selector="heroAttack:" destination="rPE-9g-KJc" eventType="touchUpInside" id="xdB-kI-7je"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="（C）SimpleRPG" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RuX-cy-ida">
+                                <rect key="frame" x="-2" y="646" width="375" height="21"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="0y7-HJ-Jme"/>
@@ -161,7 +162,7 @@
                         <outlet property="MonsterImageView" destination="EIi-CD-4ME" id="4fF-yU-xK9"/>
                         <outlet property="PlayerAttackButton" destination="E8y-Xd-z8T" id="jxm-fB-FGa"/>
                         <outlet property="PlayerImageView" destination="Wgp-5K-Gn0" id="lFg-ZZ-H6B"/>
-                        <outlet property="copyrightLabel" destination="RuX-cy-ida" id="zhh-SZ-uOF"/>
+                        <outlet property="copyrightLabel" destination="RuX-cy-ida" id="DYd-dH-a4f"/>
                         <outlet property="monsterAttackButton" destination="cjh-Nu-u1B" id="ac5-6V-GKV"/>
                         <outlet property="monsterImageView" destination="EIi-CD-4ME" id="AFn-c2-8Hr"/>
                         <outlet property="playerAttackButton" destination="E8y-Xd-z8T" id="ZsP-mM-EYl"/>
