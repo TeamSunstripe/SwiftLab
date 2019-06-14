@@ -637,8 +637,8 @@ class NotificationModel {
         data += 1
         
         // 4. Viewへデータの更新完了を通知
-        view?.updateUI()
         let view = View()
+        // Xcode9.2.1削除対応 view?.updateUI()
         view.receiveUIEvent()
     }
 }
