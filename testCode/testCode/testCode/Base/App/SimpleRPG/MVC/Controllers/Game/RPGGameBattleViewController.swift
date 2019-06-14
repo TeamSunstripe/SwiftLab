@@ -77,10 +77,10 @@ import UIKit
                         })
                         #else
                         UIView.animate(withDuration: 1.0, delay: 1.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-                            self.enemyImageView.alpha = 0.0
+                            self.monsterImageView.alpha = 0.0
                         }, completion: { finished in
                             if finished {
-                                self.enemyImageView.isHidden = true
+                                self.monsterImageView.isHidden = true
                             }
                         })
                         #endif
