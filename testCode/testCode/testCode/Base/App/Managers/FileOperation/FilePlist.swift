@@ -110,7 +110,7 @@ public enum FilePlistType {
 class FilePlist: FileManager {
     //Managerクラスを作成しているのでinitは自動的に行われる
     //sharedManagerの中にManagerクラスのinit(インスタンス)が入っています。
-    static let shared = FilePlist( fileName: nil)
+    static let shared = FilePlist()
     var type: FilePlistType = .none
     
     // A 読取専用
@@ -154,12 +154,19 @@ class FilePlist: FileManager {
     
     private var plist:NSMutableDictionary
     
+    override init() {
+        self.plist = [:]
+        super.init()
+    }
+    
     init( fileName: String?) {
         self.plist = [:]
-        if let url = Bundle.main.path(forResource: fileName , ofType:"plist" ) {
-            print("%@",url)
-            let plist = NSMutableDictionary(contentsOfFile: url)!
-            self.plist = plist
+        if let urls = Bundle.main.path(forResource: fileName , ofType:"plist" ) {
+            if let plistData = NSDictionary(contentsOfFile: urls), let plist:NSMutableDictionary = plistData.mutableCopy() as? NSMutableDictionary {
+                
+                self.plist = plist
+            }
+            
         }
     }
     
@@ -171,12 +178,18 @@ class FilePlist: FileManager {
     
     // データを取得します。
     func get<T>(_ key:String) -> T {
-        return processing(self.plist.value(forKeyPath: key)) as! T
+        if self.plist.allKeys.count > 0 {
+            return processing(self.plist.value(forKeyPath: key)) as! T
+        }
+        return T.self as! T
     }
     
     // get?としたかった。
     func want<T>(_ key:String) -> T? {
-        return processing(self.plist.value(forKeyPath: key)) as? T
+        if self.plist.allKeys.count > 0 {
+            return processing(self.plist.value(forKeyPath: key)) as? T
+        }
+        return T.self as? T
     }
     
     // 共通加工処理
@@ -188,16 +201,52 @@ class FilePlist: FileManager {
         return value
     }
     
+    func anyDic (_ isDic:NSDictionary ) -> Any? {
+        for p in isDic.allKeys {
+            print(p)
+            if let l = isDic[p] {
+                switch l {
+                case let object as Array<Any>:
+                    return anyList(object as NSArray)
+                case let object as Dictionary<AnyHashable, Any>:
+                    return anyDic(object as NSDictionary)
+                default:
+                    print(l)
+                    return l
+                }
+            }
+        }
+        return nil
+    }
+    
+    func anyList (_ isList:NSArray) -> Any? {
+        for p in isList {
+            switch p {
+            case let object as Array<Any>:
+                return anyList(object as NSArray)
+            case let object as Dictionary<AnyHashable, Any>:
+                return anyDic(object as NSDictionary)
+            default:
+                print(p)
+                return p
+            }
+        }
+        return nil
+    }
+    
     func messageTest() {
         
         print(self.type.message as Any);
         
-        let plist = FilePlist(fileName: "SettingList")
-        let list:[String] = plist.get("Foo.List")
-        for _ in list {
-            print("str")
+        let plist = FilePlist(fileName: "testDic")
+        if plist.plist.allKeys.count > 0 {
+            print(anyDic(plist.plist) as Any)
+            let list:[String]? = plist.get("Foo.List")
+            for l in list ?? [] {
+                print(l)
+            }
         }
-        
+
         print(self.openResource(fileName: "SettingList") as Any)
         print(self.documentDirectoryFile(filePath: "SettingList.plist") as Any)
         print(self.bundleFile(resource: "SettingList",type: "plist") as Any)
