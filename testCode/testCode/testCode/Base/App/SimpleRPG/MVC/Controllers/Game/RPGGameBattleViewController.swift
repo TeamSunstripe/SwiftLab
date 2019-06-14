@@ -10,8 +10,10 @@ import UIKit
 
 @IBDesignable class RPGGameBattleViewController: BaseGameViewController {
     @IBOutlet weak var monsterImageView: UIImageView!
+    @IBOutlet weak var monsterBackgroundImageView: UIImageView! // TODO: 背景画像（仮）
     @IBOutlet weak var monsterAttackButton: UIButton!
     @IBOutlet weak var playerImageView: UIImageView!
+    @IBOutlet weak var playerBackgroundImageView: UIImageView!  // TODO: 背景画像（仮）
     @IBOutlet weak var playerAttackButton: UIButton!
     
     var playerHeros: [PlayerHero?] = [] // 味方
