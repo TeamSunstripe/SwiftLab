@@ -40,6 +40,8 @@
 		F65C125A22AF903B008F008E /* DataBindingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C125922AF903B008F008E /* DataBindingModel.swift */; };
 		F65C125C22AF90D6008F008E /* DataBindingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C125B22AF90D6008F008E /* DataBindingView.swift */; };
 		F65C125F22AF993E008F008E /* testCostomColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65C125E22AF993E008F008E /* testCostomColor.swift */; };
+		F678CDBB22B384A300D323E2 /* SimpleRPGsetting.plist in Resources */ = {isa = PBXBuildFile; fileRef = F678CDBA22B384A300D323E2 /* SimpleRPGsetting.plist */; };
+		F678CDBD22B3850200D323E2 /* testDic.plist in Resources */ = {isa = PBXBuildFile; fileRef = F678CDBC22B3850200D323E2 /* testDic.plist */; };
 		F68593832297E9DE00DC7FB1 /* DebugView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F68593822297E9DE00DC7FB1 /* DebugView.swift */; };
 		F68593852297EA8200DC7FB1 /* DebugView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F68593842297EA8200DC7FB1 /* DebugView.xib */; };
 		F68593872297EBAA00DC7FB1 /* Debug.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F68593862297EBA900DC7FB1 /* Debug.storyboard */; };
@@ -105,6 +107,8 @@
 		F65C125922AF903B008F008E /* DataBindingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBindingModel.swift; sourceTree = "<group>"; };
 		F65C125B22AF90D6008F008E /* DataBindingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBindingView.swift; sourceTree = "<group>"; };
 		F65C125E22AF993E008F008E /* testCostomColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testCostomColor.swift; sourceTree = "<group>"; };
+		F678CDBA22B384A300D323E2 /* SimpleRPGsetting.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = SimpleRPGsetting.plist; sourceTree = "<group>"; };
+		F678CDBC22B3850200D323E2 /* testDic.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = testDic.plist; sourceTree = "<group>"; };
 		F68593822297E9DE00DC7FB1 /* DebugView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebugView.swift; sourceTree = "<group>"; };
 		F68593842297EA8200DC7FB1 /* DebugView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DebugView.xib; sourceTree = "<group>"; };
 		F68593862297EBA900DC7FB1 /* Debug.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Debug.storyboard; sourceTree = "<group>"; };
@@ -665,6 +669,8 @@
 			isa = PBXGroup;
 			children = (
 				F6A19504229D13ED00A4DB90 /* SettingList.plist */,
+				F678CDBA22B384A300D323E2 /* SimpleRPGsetting.plist */,
+				F678CDBC22B3850200D323E2 /* testDic.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -774,6 +780,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4EBD167228C0EC8006A193A /* LaunchScreen.storyboard in Resources */,
+				F678CDBB22B384A300D323E2 /* SimpleRPGsetting.plist in Resources */,
 				570E0BFB22A8E5840081BDF8 /* RPG.storyboard in Resources */,
 				F68593872297EBAA00DC7FB1 /* Debug.storyboard in Resources */,
 				F68593852297EA8200DC7FB1 /* DebugView.xib in Resources */,
