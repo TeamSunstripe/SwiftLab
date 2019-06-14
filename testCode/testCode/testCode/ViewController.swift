@@ -38,7 +38,7 @@ import UIKit
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
+        FilePlist.shared.messageTest()
         /************
          * Swift4の変更に伴って
          ************/
@@ -399,7 +399,13 @@ O
         
         self.view.backgroundColor = UIColor.init(hexRGBA: "FFFFFF88");
         openButton.backgroundColor = UIColor.loginButtonColor()
-        
+        let text = "foo bar buz"
+        print("   MD5: \(text.md5 ?? "")")
+        print("  SHA1: \(text.sha1 ?? "")")
+        print("SHA224: \(text.sha224 ?? "")")
+        print("SHA256: \(text.sha256 ?? "")")
+        print("SHA384: \(text.sha384 ?? "")")
+        print("SHA512: \(text.sha512 ?? "")")
     }
     
     // TODO:MenuButtons
